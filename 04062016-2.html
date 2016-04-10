@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<!--you only want to use id's once per doc. if youre' going to use
+	something multiple times in a document, use a class. Classes are denoted
+	by a period(.), while id's are denoted by pound signs(#). 
+	// -->
+	<head>
+		<style>
+			form {
+				border: 1px solid black;
+			}
+
+			#namebox {
+				width: 1000px;
+			}
+
+			.className {
+
+			}
+
+		</style>
+
+		<script type="text/javascript">
+
+		</script>
+	</head>
+	<body>
+
+		<a href="04062016-3.html" target="_blank">click me to go to page 3</a> 
+		<!--link from one page to the next-->
+		<!--target="_blank" opens the link a new tab-->
+
+
+		<form action="04062016-2.html" method="get">
+			Name <input id="namebox" type="textbox" name="firstname" value="NAME" /> <br />
+			Credit Card Number <input type="textbox" name="creditcard" value="12345"/> <br />
+			<input type="submit" value="i submit stuff" />
+		</form>
+
+		<!--
+			// functions in script tag
+			function submitThis() {
+				var p = document.getElementByID('name') value;
+				var q = document.getElementById('subject') value;
+
+				window.open('mailto:test@example.com?subject=' + q + '&body=' + p);
+			}
+
+
+			// onclick=check(): checks for empty...(uses's TA's predefined functions)
+			// in body:
+			<form name="formthing" action="index.html" method="POST">
+				<input id="name" type="text" name="firstname" value="NAME" required /><br/>
+				<input id="subject" type="text" name="subject" value="SUBJECT" required /><br/>
+				<input type="submit" value="i will submit stuff" onclick=check();"/>
+			</form>
+		-->
+
+		<a href="mailto:sshwang1@uci.edu?subject=blah&body=blahblah">click me to open email</a>
+		<!--opens your email client-->
+	</body>
+</html>
+
