@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<style>
+			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
 			table {
 				border: 1px solid blue;
 			}
@@ -13,48 +14,69 @@
 			p {
 				margin: 0;
 			}
-			img {
+			img.table {
 				border: 3px solid black;
 				width: 250px;
 				height: 250px;
 			}
-			img:hover{ 
+			img.table:hover{ 
 				width: 400px;
 				height: 400px;
+			}
+			#img1 {
+				margin-right: auto;
+				margin-left: auto;
+				display: block;
+				width: 1250px;
+				height: 400px;
+				
+			}
+			body{
+				background: rgba(242,246,248,1);
 			}
 		</style>
 
 		<script type="text/javascript">
 
 		</script>
+		<br><br>
+		<img id="img1" src="http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG" >
+		<br>
+		<div>Main Page</div>
+		<div>About Us</div>
+		<br><br>
 	</head>
+
 	<body>
-		<table>
+		<br>
+		<p>
+		<table align="center">
 			<tr>
 				<td>Meats</td>   <!--in every table row, there are different table data cells-->
 				<td>Vegetables</td>
 				<td>Fruits</td>
 			</tr>
 			<tr>
-				<td><img src="http://www.seriouseats.com/images/2015/04/20150408-canadian-bacon-taste-test.jpg" alt="Bacon"/><p>$50.00</p><p>Canadian Bacon</p></td>
+				<td><img class="table" src="http://www.seriouseats.com/images/2015/04/20150408-canadian-bacon-taste-test.jpg" alt="Bacon"/><p>$50.00</p><p>Canadian Bacon</p></td>
 
-				<td><img src="https://dbjpq4m8xws63.cloudfront.net/gallery/article/136129-2669" alt="baby carrots"/><p>$5.00</p><p>Baby Carrots</p></td>
+				<td><img class="table" src="https://dbjpq4m8xws63.cloudfront.net/gallery/article/136129-2669" alt="baby carrots"/><p>$5.00</p><p>Baby Carrots</p></td>
 			</tr>
 
             <tr>
-				<td><img src="http://www.glatt-organics.com/wp-content/uploads/2013/08/iStock_000010753409Large.jpg" alt="Bacon"/><p>$30.00</p><p>Chicken Breast</p></td>
+				<td><img class="table" src="http://www.glatt-organics.com/wp-content/uploads/2013/08/iStock_000010753409Large.jpg" alt="Bacon"/><p>$30.00</p><p>Chicken Breast</p></td>
             </tr>
 
             <tr>
-				<td><img src="http://cdn1.bigcommerce.com/n-ww20x/uvsd1rv/products/80/images/280/Ribeye_Steak__19258.1385953288.1280.1280.jpg?c=2" alt="Rib Eye Steak"/><p>$70.00</p><p>Rib Eye Steak</p></td>
+				<td><img class="table" src="http://cdn1.bigcommerce.com/n-ww20x/uvsd1rv/products/80/images/280/Ribeye_Steak__19258.1385953288.1280.1280.jpg?c=2" alt="Rib Eye Steak"/><p>$70.00</p><p>Rib Eye Steak</p></td>
             </tr>
 
             <tr>
-				<td><img src="http://sushistik.com.ua/image/data/Salmon.png" alt="Salmon"/><p>$100.00</p><p>Salmon</p></td>
+				<td><img class="table" src="http://sushistik.com.ua/image/data/Salmon.png" alt="Salmon"/><p>$100.00</p><p>Salmon</p></td>
 
-                <td><img src="http://www.specialtyproduce.com/sppics/581.png" alt="romaine lettuce"/><p>$10.00</p><p>Romaine Lettuce</p></td>
+                <td><img class="table" src="http://www.specialtyproduce.com/sppics/581.png" alt="romaine lettuce"/><p>$10.00</p><p>Romaine Lettuce</p></td>
             </tr>
 		</table>
+	</p>
 	</body>
 </html>
 
