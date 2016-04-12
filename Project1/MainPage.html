@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<style>
+			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
 			table {
 				border: 1px solid blue;
 			}
@@ -13,32 +14,53 @@
 			p {
 				margin: 0;
 			}
-			img {
+			img.table {
 				border: 3px solid black;
 				width: 250px;
 				height: 250px;
 			}
-			img:hover{ 
+			img.table:hover{ 
 				width: 400px;
 				height: 400px;
+			}
+			#img1 {
+				margin-right: auto;
+				margin-left: auto;
+				display: block;
+				width: 1250px;
+				height: 400px;
+				
+			}
+			body{
+				background: rgba(242,246,248,1);
 			}
 		</style>
 
 		<script type="text/javascript">
 
 		</script>
+		<br><br>
+		<img id="img1" src="http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG" >
+		<br>
+		<div>Main Page</div>
+		<div>About Us</div>
+		<br><br>
 	</head>
+
 	<body>
-		<table>
+		<br>
+		<p>
+		<table align="center">
 			<tr>
 				<td>hello</td>   <!--in every table row, there are different table data cells-->
 				<td>what's up</td>
 				<td>last column</td>
 			</tr>
 			<tr>
-				<td><img src="http://d3u67r7pp2lrq5.cloudfront.net/product_photos/10334998/blueberry-cheesecake-01__57561_zoom_original.jpg" alt="cheesecake"/><p>$100.00</p><p>This is a cheesecake</p></td>
+				<td><img class="table"src="http://d3u67r7pp2lrq5.cloudfront.net/product_photos/10334998/blueberry-cheesecake-01__57561_zoom_original.jpg" alt="cheesecake"/><p>$100.00</p><p>This is a cheesecake</p></td>
 			</tr>
 		</table>
+	</p>
 	</body>
 </html>
 
