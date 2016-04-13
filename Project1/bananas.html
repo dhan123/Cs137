@@ -5,6 +5,10 @@
 			@font-face { font-family: Moon Flower; src: url('Moon Flower.ttf'); }
 			@font-face { font-family: Moon Flower; font-weight: bold; src: url('Moon Flower Bold.ttf');}
 
+			* {
+				font-family: Verdana;
+				font-size: 15px;
+			}
 
 			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
 			#img1 {
@@ -23,6 +27,9 @@
 				font-size: 80px;
 			}
 			img {
+				width: 200px;
+			}
+			.Main {
 				width: 500px;
 				display: block;
 				margin: 0 auto;
@@ -44,8 +51,22 @@
 	</head>
 
 	<body>
-		<p>
-			<img src="http://dreamatico.com/data_images/banana/banana-3.jpg" alt="Banana"/>
-		</p>
+		<!--<p>
+			<img src="http://dreamatico.com/data_images/banana/banana-3.jpg" class="Main" alt="Banana"/>
+		</p>-->
+		<table align="center">
+			<tr>
+				<td><img src="http://dreamatico.com/data_images/banana/banana-3.jpg" class="Main" alt="Banana"/></td>
+				<td width="300px">This is a banana. This is the description of the banana. Yes. Ples come buy are banana. Below are more images of the banana. Banana. Banana. Banana. Yeyeyeyeyeyeyey!!</td>
+			</tr>
+		</table>
+
+		<table align="center">
+			<tr>
+				<td><img src="http://dreamatico.com/data_images/banana/banana-7.jpg"/></td>
+				<td><img src="http://ask-thenutritionist.com/wp-content/uploads/2014/05/Banana-2.jpg"/></td>
+				<td><img src="http://bananas.wp-example.net/images/bananas.jpg"/></td>
+			</tr>
+		</table>	
 	</body>
 </html>
