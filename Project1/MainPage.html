@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<style>
+			@font-face { font-family: Moon Flower; src: url('Moon Flower.ttf'); }
+			@font-face { font-family: Moon Flower; font-weight: bold; src: url('Moon Flower Bold.ttf');}
+
 			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
 			table {
 				/*border: 1px solid blue;*/
@@ -31,26 +34,35 @@
 				display: block;
 				width: 1250px;
 				height: 400px;
-				
+				text-align: center;
+			}
+			#link {
+				font-family: Moon Flower;
+				text-decoration: none;
+				font-size: 80px;
 			}
 			.category {
 				font-size:2em;
 			}
+			/*
 			body{
 				background: rgba(242,246,248,1);
-			}
+			}*/
 		</style>
 
 		<script type="text/javascript">
 
 		</script>
-		<br><br>
+
+		<br></br>
 		<img id = "img1" src="banner.jpg">
 		<!--<img id="img1" src="http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG" >-->
-		<br>
-		<div><a href="MainPage.html">Main Page</a></div>
-		<div><a href="AboutUs.html">About Us</a></div>
-		<br><br>
+		<br></br>
+		<!--<div><a href="MainPage.html"><img src="home.png", height="100px"></a></div>
+		<div><a href="AboutUs.html"><img src="aboutus.png", height="100px"></a></div>-->
+		<div><a href="MainPage.html", id="link">Home</a></div>
+		<div><a href="AboutUs.html", id="link">About Us</a></div>
+		<br></br>
 	</head>
 
 	<body>
@@ -75,7 +87,7 @@
 
                 <td><img class="table" src="http://www.specialtyproduce.com/sppics/581.png" alt="Romaine Lettuce"/><p>$10.00</p><p>Romaine Lettuce</p></td>
 
-                <td><img class="table" src="http://dreamatico.com/data_images/banana/banana-3.jpg" alt="Banana"/><p>$1.00</p><p>Bananas</p></td>
+                <td><a href="bananas.html"><img class="table" src="http://dreamatico.com/data_images/banana/banana-3.jpg" alt="Banana"/></a><p>$1.00</p><p>Bananas</p></td>
             </tr>
 
             <tr>
