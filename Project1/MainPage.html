@@ -4,10 +4,12 @@
 		<style>
 			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
 			table {
-				border: 1px solid blue;
+				/*border: 1px solid blue;*/
+				font-family: "Verdana";
+				border-spacing: 2em;
 			}
 			td {
-				border: 1px solid green;
+				/*border: 1px solid green;*/
 				text-align: center;
 				width: 500px;
 			}
@@ -31,6 +33,9 @@
 				height: 400px;
 				
 			}
+			.category {
+				font-size:2em;
+			}
 			body{
 				background: rgba(242,246,248,1);
 			}
@@ -40,7 +45,8 @@
 
 		</script>
 		<br><br>
-		<img id="img1" src="http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG" >
+		<img id = "img1" src="banner.jpg">
+		<!--<img id="img1" src="http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG" >-->
 		<br>
 		<div><a href="MainPage.html">Main Page</a></div>
 		<div><a href="AboutUs.html">About Us</a></div>
@@ -52,9 +58,9 @@
 		<p>
 		<table align="center">
 			<tr>
-				<td>Meats</td>   <!--in every table row, there are different table data cells-->
-				<td>Vegetables</td>
-				<td>Fruits</td>
+				<td class="category">Meats</td>   <!--in every table row, there are different table data cells-->
+				<td class="category">Vegetables</td>
+				<td class="category">Fruits</td>
 			</tr>
 			<tr>
 				<td><img class="table" src="http://www.seriouseats.com/images/2015/04/20150408-canadian-bacon-taste-test.jpg" alt="Bacon"/><p>$50.00</p><p>Canadian Bacon</p></td>
