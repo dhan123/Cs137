@@ -35,10 +35,51 @@
 				margin: 0 auto;
 				text-align: center;
 			}
+            input {
+                font-family: Moon Flower;
+                color: black;
+                font-size: 19px;
+                font-weight: bold;
+            }
 
 		</style>
 
 		<script type="text/javascript">
+            function submit_this() {
+                var p = document.getElementById('name').value;
+                var q = "bananas";
+                window.open('mailto:test@example.com?subject=' + q + "&body=" + p);
+
+            }
+
+            function Validate() {
+                var pattern = /[A-Za-z ][A-Za-z ]*/g;
+                var num_patt = /^[0-9]{12,19}/g;
+                var qty_patt = /^0*[1-9][0-9]*/g;
+                var name = document.getElementById("name").value;
+                var name_result = name.match(pattern);
+                var creditcard = document.getElementById("creditcard").value;
+                var credit_result = creditcard.match(num_patt);
+                var qty = document.getElementById("qty").value;
+                var qty_result = qty.match(qty_patt);
+
+                if (name.length != name_result[0].length) {
+                    alert("Error");
+                    location = "bananas.html";
+                } else if (credit_result == null || creditcard.length != credit_result[0].length) {
+                    alert("Error");
+                    location = "bananas.html";
+                } else if (qty_result == null || qty.length != qty_result[0].length) {
+                    alert("Error");
+                    location = "bananas.html";
+                } else {
+                    alert("Thank you for purchasing from us today!");
+                    location = "MainPage.html";
+                    submit_this();
+                }
+            
+            }
+                
 
 		</script>
 
@@ -64,21 +105,21 @@
 
 		<table align="center">
 			<tr>
-				<td><img src="http://dreamatico.com/data_images/banana/banana-7.jpg"/></td>
-				<td><img src="http://ask-thenutritionist.com/wp-content/uploads/2014/05/Banana-2.jpg"/></td>
-				<td><img src="http://bananas.wp-example.net/images/bananas.jpg"/></td>
+				<td><img src="http://dreamatico.com/data_images/banana/banana-7.jpg" alt="Cut Banana" /></td>
+				<td><img src="http://ask-thenutritionist.com/wp-content/uploads/2014/05/Banana-2.jpg" alt="Peeled Banana" /></td>
+				<td><img src="http://bananas.wp-example.net/images/bananas.jpg" alt="Bananas" /></td>
 			</tr>
 		</table>
 
-		<form action="???" method="post" align="center">
-			Name <input id="namebox" type="textbox" name="firstname" value="John" required /> <br />
-			Email <input type="textbox" name="email" value="jdoe@gmail.com" required /> <br />
-			Credit Card Number <input type="textbox" name="creditcard" value="12345" required /> <br />
-			Quantity <input type="textbox" name ="quantity" value="1" required /> <br />
+		<form onSubmit="return Validate();" method="post" align="center">
+			Name <input id="name" type="text" name="name" value="John Doe" required /> <br />
+			Email <input type="email" name="email" value="jdoe@gmail.com" required /> <br />
+			Credit Card Number <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+			Quantity <input id="qty" type="number" name ="quantity" value="1" required /> <br />
 			Shipping Option <input type="radio" name="shipping" value="1 Day"/> 1 Day
 							<input type="radio" name="shipping" value="2 Day"/> 2 Day
 							<input type="radio" name="shipping" value="Regular" checked="checked" /> Regular <br />
-			<input type="submit" value="i submit stuff" />
+			<input type="submit" value="Purchase" />
 		</form>
 
 	</body>
