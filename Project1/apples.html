@@ -35,12 +35,6 @@
 				margin: 0 auto;
 				text-align: center;
 			}
-            input {
-                font-family: Moon Flower;
-                color: black;
-                font-size: 19px;
-                font-weight: bold;
-            }
             #div1{
             	width: 80%;
             	text-align: right;
@@ -58,7 +52,17 @@
             }
             label{
             	display: inline-block;
-            	width: 100px;
+            	float: left;
+            	clear: left;
+            	width: 150px;
+            }
+            input {
+                font-family: Moon Flower;
+                color: black;
+                font-size: 19px;
+                font-weight: bold;
+                display: inline-block;
+                float:left;
             }
 
 
@@ -157,10 +161,15 @@
 		<br></br>
 		<br>
 		<form onSubmit="return Validate();" method="post" align="left">
-			<label>Name</label><input id="name" type="textbox" name="name" value="John Doe" required /> <br />
-			<label>Email</label> <input type="email" name="email" value="jdoe@gmail.com" required /> <br />
-			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
+			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
+			<label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
+			<label>Phone Number</label><input id="phone_number" type="textbox" name="phone_number" required /> <br />
+			<label>Email</label> <input type="email" name="email" value="jdoe@gmail.com" required /> <br />
+			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
+			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+			
 			Shipping Option <input type="radio" name="shipping" value="1 Day"/> 1 Day
 							<input type="radio" name="shipping" value="2 Day"/> 2 Day
 							<input type="radio" name="shipping" value="Regular" checked="checked" /> Regular <br />
