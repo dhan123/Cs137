@@ -71,6 +71,20 @@
             }
 
             function Validate() {
+                var products = [];
+                products["M1"] = "Canadian Bacon";
+                products["M2"] = "Chicken Breast(s)";
+                products["M3"] = "Rib Eye Steak(s)";
+                products["M4"] = "Salmon";
+                products["V1"] = "Baby Carrots";
+                products["V2"] = "Romaine Lettuce";
+                products["V3"] = "Spinach";
+                products["V4"] = "Yellow Onion(s)";
+                products["F1"] = "Apple(s)";
+                products["F2"] = "Banana(s)";
+                products["F3"] = "Dragonfruit(s)";
+                products["F4"] = "Orange(s)";
+
                 var pattern = /[A-Za-z ][A-Za-z ]*/g;
                 var num_patt = /^[0-9]{12,19}/g;
                 var qty_patt = /^0*[1-9][0-9]*/g;
@@ -88,6 +102,8 @@
                 var phone_number = document.getElementById("phone_number").value;
                 var email = document.getElementById("email").value;
                 var shipping_option = document.getElementById("regular").value;
+                var product_id = document.getElementById("p_id").value;
+
                 if (document.getElementById('1day').checked) {
  					shipping_option = document.getElementById('1day').value;
 				}
@@ -97,26 +113,29 @@
 
                 if (f_name.length != f_name_result[0].length) {
                     alert("Error");
-                    location = "bananas.html";
+                    location = window.history.back();
                 } else if (l_name.length != l_name_result[0].length) {
                 	alert("Error");
-                	location = "bananas.html";
+                    location = window.history.back();
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
-                    location = "bananas.html";
+                    location = window.history.back();
                 } else if (qty_result == null || qty.length != qty_result[0].length) {
                     alert("Error");
-                    location = "bananas.html";
+                    location = window.history.back();
                 } else if (shipping_addr.length != shipping_addr_result[0].length) {
                 	alert("Error");
-                	location = "bananas.html";
+                    location = window.history.back();
                 } else if (phone_number.length != 7 && phone_number.length != 10) {
                 	alert("Error");
-                	location = "bananas.html";
+                    location = window.history.back();
+                } else if (!(product_id in products)) {
+                    alert("Error");
+                    location = window.history.back();
                 } else {
                     alert("Thank you for purchasing from us today!");
                     location = "MainPage.html";
-                    submit_this(f_name, l_name, email, 'bananas', qty, shipping_option);
+                    submit_this(f_name, l_name, email, products[product_id], qty, shipping_option);
                 }
             
             }
