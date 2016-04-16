@@ -65,37 +65,67 @@
 		</style>
 
 		<script type="text/javascript">
-            function submit_this() {
-                var p = document.getElementById('name').value;
-                var q = "bananas";
-                window.open('mailto:test@example.com?subject=' + q + "&body=" + p);
+            function submit_this(firstname, lastname, email, item, quantity, shipping_option) {
+                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi' + firstname + lastname + ',thank you for your purchanse from NOMz. Here is an order confirmation for you./nYou have ordered' + quantity + ' ' + item + '.Your shipment is scheduled to arrive through'+ shipping_option + '.');
 
             }
 
             function Validate() {
+            	console.log("top of validate");
                 var pattern = /[A-Za-z ][A-Za-z ]*/g;
                 var num_patt = /^[0-9]{12,19}/g;
                 var qty_patt = /^0*[1-9][0-9]*/g;
-                var name = document.getElementById("name").value;
-                var name_result = name.match(pattern);
+                var addr_patt = /^[0-9]*[A-Za-z ]*/g;
+                var f_name = document.getElementById("f_name").value;
+                var f_name_result = f_name.match(pattern);
+                var l_name = document.getElementById("l_name").value;
+                var l_name_result = l_name.match(pattern);
                 var creditcard = document.getElementById("creditcard").value;
                 var credit_result = creditcard.match(num_patt);
                 var qty = document.getElementById("qty").value;
                 var qty_result = qty.match(qty_patt);
+                var shipping_addr = document.getElementById("address").value;
+                var shipping_addr_result = shipping_addr.match(addr_patt);
+                var phone_number = document.getElementById("phone_number").value;
+                var email = document.getElementById("email").value;
+                var shipping_option = document.getElementById("regular").value;
+                console.log("after variable setup");
+                if (document.getElementById('1day').checked) {
+ 					shipping_option = document.getElementById('1day').value;
+				}
+				if (document.getElementById('2day').checked) {
+					shipping_option = document.getElementById('2day').value;
+				}
+				console.log("after find shipping_option");
 
-                if (name.length != name_result[0].length) {
+                if (f_name.length != f_name_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
+                    console.log("f_name");
+                } else if (l_name.length != l_name_result[0].length) {
+                	alert("Error");
+                	location = "bananas.html";
+                	console.log("l_name");
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
+                    console.log("creditcard");
                 } else if (qty_result == null || qty.length != qty_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
+                    console.log("qty");
+                } else if (shipping_addr.length != shipping_addr_result[0].length) {
+                	alert("Error");
+                	location = "bananas.html";
+                	console.log("shipping_addr");
+                } else if (phone_number.length != 7 && phone_number.length != 10) {
+                	alert("Error");
+                	location = "bananas.html";
+                	console.log("phone_number");
                 } else {
                     alert("Thank you for purchasing from us today!");
                     location = "MainPage.html";
-                    submit_this();
+                    submit_this(f_name, l_name, email, 'bananas', qty, shipping_option);
                 }
             
             }
@@ -160,14 +190,21 @@
 		<br></br>
 		<br>
 		<form onSubmit="return Validate();" method="post" align="left">
-			<label>Name</label><input id="name" type="textbox" name="name" value="John Doe" required /> <br />
-			<label>Email</label> <input type="email" name="email" value="jdoe@gmail.com" required /> <br />
-			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
-			Shipping Option <input type="radio" name="shipping" value="1 Day"/> 1 Day
-							<input type="radio" name="shipping" value="2 Day"/> 2 Day
-							<input type="radio" name="shipping" value="Regular" checked="checked" /> Regular <br />
-			<input type="submit" value="Purchase" />
+			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
+			<label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
+			<label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
+			<label>Email</label> <input type="email" id="email" name="email" value="jdoe@gmail.com" required /> <br />
+			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
+			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+
+			<labeL>Shipping Option</label>
+				<label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label> 
+				<label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label> 
+				<label><input class="radiobutton" id="regular" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
+			<label><input type="submit" value="Purchase" /></label>
+			
 		</form>
 
 	</body>
