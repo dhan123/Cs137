@@ -66,12 +66,11 @@
 
 		<script type="text/javascript">
             function submit_this(firstname, lastname, email, item, quantity, shipping_option) {
-                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi' + firstname + lastname + ',thank you for your purchanse from NOMz. Here is an order confirmation for you./nYou have ordered' + quantity + ' ' + item + '.Your shipment is scheduled to arrive through'+ shipping_option + '.');
+                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi ' + firstname + " " + lastname + ',%0D%0A%0D%0AThank you for your purchase from NOMz. Here is an order confirmation for you.%0D%0AYou have ordered ' + quantity + ' ' + item + '. Your shipment is scheduled to arrive through '+ shipping_option + ' shipping.');
 
             }
 
             function Validate() {
-            	console.log("top of validate");
                 var pattern = /[A-Za-z ][A-Za-z ]*/g;
                 var num_patt = /^[0-9]{12,19}/g;
                 var qty_patt = /^0*[1-9][0-9]*/g;
@@ -89,39 +88,31 @@
                 var phone_number = document.getElementById("phone_number").value;
                 var email = document.getElementById("email").value;
                 var shipping_option = document.getElementById("regular").value;
-                console.log("after variable setup");
                 if (document.getElementById('1day').checked) {
  					shipping_option = document.getElementById('1day').value;
 				}
 				if (document.getElementById('2day').checked) {
 					shipping_option = document.getElementById('2day').value;
 				}
-				console.log("after find shipping_option");
 
                 if (f_name.length != f_name_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
-                    console.log("f_name");
                 } else if (l_name.length != l_name_result[0].length) {
                 	alert("Error");
                 	location = "bananas.html";
-                	console.log("l_name");
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
-                    console.log("creditcard");
                 } else if (qty_result == null || qty.length != qty_result[0].length) {
                     alert("Error");
                     location = "bananas.html";
-                    console.log("qty");
                 } else if (shipping_addr.length != shipping_addr_result[0].length) {
                 	alert("Error");
                 	location = "bananas.html";
-                	console.log("shipping_addr");
                 } else if (phone_number.length != 7 && phone_number.length != 10) {
                 	alert("Error");
                 	location = "bananas.html";
-                	console.log("phone_number");
                 } else {
                     alert("Thank you for purchasing from us today!");
                     location = "MainPage.html";
