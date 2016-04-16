@@ -64,6 +64,11 @@
                 display: inline-block;
                 float:left;
             }
+            input.radiobutton {
+            	display:inline-block;
+            	float:left;
+            	margin-left:1cm;
+            }
 
 
 		</style>
@@ -160,7 +165,7 @@
 		<br></br>
 		<br></br>
 		<br>
-		<form onSubmit="return Validate();" method="post" align="left">
+		<form class="orderForm" onSubmit="return Validate();" method="post" align="left">
 			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
 			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
@@ -170,10 +175,12 @@
 			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
 			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
 			
-			Shipping Option <input type="radio" name="shipping" value="1 Day"/> 1 Day
-							<input type="radio" name="shipping" value="2 Day"/> 2 Day
-							<input type="radio" name="shipping" value="Regular" checked="checked" /> Regular <br />
-			<input type="submit" value="Purchase" />
+
+			<labeL>Shipping Option</label>
+				<label><input class="radiobutton" type="radio" name="shipping" value="1 Day"/>1 Day</label> 
+				<label><input class="radiobutton" type="radio" name="shipping" value="2 Day"/>2 Day</label> 
+				<label><input class="radiobutton" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
+			<label><input type="submit" value="Purchase" /></label>
 		</form>
 
 	</body>
