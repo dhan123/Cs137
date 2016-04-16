@@ -35,12 +35,6 @@
 				margin: 0 auto;
 				text-align: center;
 			}
-            input {
-                font-family: Moon Flower;
-                color: black;
-                font-size: 19px;
-                font-weight: bold;
-            }
             #div1{
             	width: 80%;
             	text-align: right;
@@ -58,7 +52,22 @@
             }
             label{
             	display: inline-block;
-            	width: 100px;
+            	float: left;
+            	clear: left;
+            	width: 150px;
+            }
+            input {
+                font-family: Moon Flower;
+                color: black;
+                font-size: 19px;
+                font-weight: bold;
+                display: inline-block;
+                float:left;
+            }
+            input.radiobutton {
+            	display:inline-block;
+            	float:left;
+            	margin-left:1cm;
             }
 
 
@@ -113,25 +122,25 @@
 
                 if (f_name.length != f_name_result[0].length) {
                     alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (l_name.length != l_name_result[0].length) {
                 	alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (qty_result == null || qty.length != qty_result[0].length) {
                     alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (shipping_addr.length != shipping_addr_result[0].length) {
                 	alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (phone_number.length != 7 && phone_number.length != 10) {
                 	alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else if (!(product_id in products)) {
                     alert("Error");
-                    location = window.history.back();
+                    location = location.reload();
                 } else {
                     alert("Thank you for purchasing from us today!");
                     location = "MainPage.html";
@@ -182,6 +191,7 @@
 					<li>Ripe</li>
 					<li>Color: Yellow</li>
 					<li>Amount of Bananas per order: 1</li>
+					<li>Product ID: F2</li>
 				</ul>
 		</div>
 
@@ -199,7 +209,7 @@
 		<br></br>
 		<br></br>
 		<br>
-		<form onSubmit="return Validate();" method="post" align="left">
+		<form class="orderForm" onSubmit="return Validate();" method="post" align="left">
 			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
 			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />

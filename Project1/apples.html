@@ -74,37 +74,77 @@
 		</style>
 
 		<script type="text/javascript">
-            function submit_this() {
-                var p = document.getElementById('name').value;
-                var q = "apples";
-                window.open('mailto:test@example.com?subject=' + q + "&body=" + p);
+            function submit_this(firstname, lastname, email, item, quantity, shipping_option) {
+                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi ' + firstname + " " + lastname + ',%0D%0A%0D%0AThank you for your purchase from NOMz. Here is an order confirmation for you.%0D%0AYou have ordered ' + quantity + ' ' + item + '. Your shipment is scheduled to arrive through '+ shipping_option + ' shipping.');
 
             }
 
             function Validate() {
+                var products = [];
+                products["M1"] = "Canadian Bacon";
+                products["M2"] = "Chicken Breast(s)";
+                products["M3"] = "Rib Eye Steak(s)";
+                products["M4"] = "Salmon";
+                products["V1"] = "Baby Carrots";
+                products["V2"] = "Romaine Lettuce";
+                products["V3"] = "Spinach";
+                products["V4"] = "Yellow Onion(s)";
+                products["F1"] = "Apple(s)";
+                products["F2"] = "Banana(s)";
+                products["F3"] = "Dragonfruit(s)";
+                products["F4"] = "Orange(s)";
+
                 var pattern = /[A-Za-z ][A-Za-z ]*/g;
                 var num_patt = /^[0-9]{12,19}/g;
                 var qty_patt = /^0*[1-9][0-9]*/g;
-                var name = document.getElementById("name").value;
-                var name_result = name.match(pattern);
+                var addr_patt = /^[0-9]*[A-Za-z ]*/g;
+                var f_name = document.getElementById("f_name").value;
+                var f_name_result = f_name.match(pattern);
+                var l_name = document.getElementById("l_name").value;
+                var l_name_result = l_name.match(pattern);
                 var creditcard = document.getElementById("creditcard").value;
                 var credit_result = creditcard.match(num_patt);
                 var qty = document.getElementById("qty").value;
                 var qty_result = qty.match(qty_patt);
+                var shipping_addr = document.getElementById("address").value;
+                var shipping_addr_result = shipping_addr.match(addr_patt);
+                var phone_number = document.getElementById("phone_number").value;
+                var email = document.getElementById("email").value;
+                var shipping_option = document.getElementById("regular").value;
+                var product_id = document.getElementById("p_id").value;
 
-                if (name.length != name_result[0].length) {
+                if (document.getElementById('1day').checked) {
+ 					shipping_option = document.getElementById('1day').value;
+				}
+				if (document.getElementById('2day').checked) {
+					shipping_option = document.getElementById('2day').value;
+				}
+
+                if (f_name.length != f_name_result[0].length) {
                     alert("Error");
-                    location = "apples.html";
+                    location = location.reload();
+                } else if (l_name.length != l_name_result[0].length) {
+                	alert("Error");
+                    location = location.reload();
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
-                    location = "apples.html";
+                    location = location.reload();
                 } else if (qty_result == null || qty.length != qty_result[0].length) {
                     alert("Error");
-                    location = "apples.html";
+                    location = location.reload();
+                } else if (shipping_addr.length != shipping_addr_result[0].length) {
+                	alert("Error");
+                    location = location.reload();
+                } else if (phone_number.length != 7 && phone_number.length != 10) {
+                	alert("Error");
+                    location = location.reload();
+                } else if (!(product_id in products)) {
+                    alert("Error");
+                    location = location.reload();
                 } else {
                     alert("Thank you for purchasing from us today!");
                     location = "MainPage.html";
-                    submit_this();
+                    submit_this(f_name, l_name, email, products[product_id], qty, shipping_option);
                 }
             
             }
@@ -148,6 +188,7 @@
 					<li>Ripe</li>
 					<li>Color: Bright Red</li>
 					<li>Amount of apples per order: 1</li>
+					<li>Product ID: F1</li>
 				</ul>
 		</div>
 
@@ -170,12 +211,11 @@
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
 			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
 			<label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
-			<label>Phone Number</label><input id="phone_number" type="textbox" name="phone_number" required /> <br />
-			<label>Email</label> <input type="email" name="email" value="jdoe@gmail.com" required /> <br />
+			<label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
+			<label>Email</label> <input type="email" id="email" name="email" value="jdoe@gmail.com" required /> <br />
 			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
 			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
 			
-
 			<labeL>Shipping Option</label>
 				<label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label> 
 				<label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label> 
