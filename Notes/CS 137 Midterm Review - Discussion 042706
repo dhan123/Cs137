@@ -1,0 +1,90 @@
+CS 137 Midterm Review - Discussion 042706
+-------------------------------------------
+mult choice:
+- if given a URL, know how to identify the domain name
+- input text question; know which ones (types) are valid, etc.
+	L Radio button etc
+- given some kind of inline style, know what it does
+	L e.g. background-color:red;
+- CSS, how do you denote a class vs. an ID
+- definition of what is a server cookie
+- javascript is an interpretive language!!! does not use a compiler
+- php, how do you declare a variable??? "$"
+- php, concatenation: "."
+- php runs on server. not client
+- know the 3 ways of accessing a mysql database
+	L legacy, the one not supported  by ics but is, and the one doing in class
+- know mysql commands: select, insert, update, delete, drop, etc.
+	L know how to create tables, select tables, insert things into tables
+- know how to open email by clicking javascript html hyperlink
+	L e.g. <a href="mailto:"> 
+- know difference between input box and text area box
+	L text area box is a really big input box
+		- input box only 1 line vs text area which is multiple lines
+- pseudoclasses in css: 
+	L e.g. hover in class
+		- e.g. know that when it is hovered over it turns a color, and when you leave it goes back to normal
+- know how to write it if you are given e.g. "i want background to be red, font to be arial, font color to be blue"
+	L know font-family, font color, background color
+- given a javascript function that does something
+	L tell him what it does
+	L just read the method implication that is there
+	L e.g. turning things uppercase and lowercase 
+- mult choice: which of these 4 lines is wrong. there will be an error in one of them
+	L php, html, css, javascript, etc.
+- <body>
+	<p id="person">aaa</p>
+  	<script> 
+		var x = document.getElementById("ssss");
+  	</script>
+  </body>
+- know what php method explode does 
+	L given "this:is:a:string" --> explode turns it into an array using the delimeter
+- know how to push things onto an array using php
+
+free response:
+- input boxes
+	L radio button, check box, text input, etc.
+- can you write css using classes and ids
+	#redID {
+		color:blue;
+	}
+	.blueClass {
+		color: red;
+	}
+- <script>
+	function doSomething() {
+		alert("i did something! woo tell mom");
+	}
+	var x = document.getElementById("person");
+	x.addEventListener("click",doSomething);
+  </script>
+
+ 	L it uses the funciton doSomething when it is clicked
+ 	L know how to make alart boxes, etc.
+- if your image has an alt, and your image is not loading, then the alternative text will show
+- know how to write printing something to console
+  <script> 
+  	console.log("hi mom");
+  </script>
+- write out actual sql commands
+	L if you had a 3 column table, how would you only select 1 column?
+- if you want to get all the info from a table how would you spit it out to the web page and also add html elements and css to it.
+  <head>
+  	<style>
+
+  	</style>
+  </head>
+  <body>
+  	<?php
+  		foreach($conn->query($sql) as $row) {
+  			echo "<p class='blue'>" . $row['id'] . "</p>";
+  		}
+  	?>
+  </body>
+- also know how to disconnect from mysql connection
+
+
+
+
+
