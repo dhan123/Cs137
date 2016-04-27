@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			@font-face { font-family: Moon Flower; src: url('Moon Flower.ttf'); }
+			@font-face { font-family: Moon Flower; font-weight: bold; src: url('Moon Flower Bold.ttf');}
+
+			* {
+				font-family: Verdana;
+				font-size: 15px;
+			}
+
+			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
+			#img1 {
+				margin-right: auto;
+				margin-left: auto;
+				display: block;
+				width: 1250px;
+				height: 400px;
+				text-align: center;
+				
+			}
+			#link {
+				font-family: Moon Flower;
+				color: gray;
+				text-decoration: none;
+				font-size: 80px;
+			}
+			img {
+				width: 200px;
+			}
+			.Main {
+				width: 500px;
+				display: block;
+				margin: 0 auto;
+				text-align: center;
+			}
+            #div1{
+            	width: 80%;
+            	text-align: right;
+            	font-size: 40px;
+            	font-weight: normal;
+            }
+            #div2{
+            	width: 20%;
+            	text-align: left;
+            }
+            ul{
+            	font-weight: normal;
+            	font-size: 30px;
+
+            }
+            label{
+            	display: inline-block;
+            	float: left;
+            	clear: left;
+            	width: 150px;
+            }
+            input {
+                font-family: Moon Flower;
+                color: black;
+                font-size: 19px;
+                font-weight: bold;
+                display: inline-block;
+                float:left;
+            }
+            input.radiobutton {
+            	display:inline-block;
+            	float:left;
+            	margin-left:1cm;
+            }
+
+
+		</style>
+
+		<script type="text/javascript">
+            function submit_this(firstname, lastname, email, item, price, quantity, shipping_option) {
+                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi ' + firstname + " " + lastname + ',%0D%0A%0D%0AThank you for your purchase from NOMz. Here is an order confirmation for you. %0D%0A%0D%0AYou have ordered ' + quantity + ' ' + item + '. %0D%0AYour Total is $' + price * quantity + '.' + '%0D%0A%0D%0AYour shipment is scheduled to arrive through '+ shipping_option + ' shipping.');
+
+            }
+
+            function Validate() {
+                var products = [];
+                products["M1"] = "Canadian Bacon";
+                products["M2"] = "Chicken Breast(s)";
+                products["M3"] = "Rib Eye Steak(s)";
+                products["M4"] = "Salmon";
+                products["V1"] = "Baby Carrots";
+                products["V2"] = "Romaine Lettuce";
+                products["V3"] = "Spinach";
+                products["V4"] = "Yellow Onion(s)";
+                products["F1"] = "Apple(s)";
+                products["F2"] = "Banana(s)";
+                products["F3"] = "Dragonfruit(s)";
+                products["F4"] = "Orange(s)";
+
+                var prices = [];
+                prices["M1"] = 50;
+                prices["M2"] = 30;
+                prices["M3"] = 70;
+                prices["M4"] = 100;
+                prices["V1"] = 5;
+                prices["V2"] = 10;
+                prices["V3"] = 33;
+                prices["V4"] = 12;
+                prices["F1"] = 9;
+                prices["F2"] = 1;
+                prices["F3"] = 44;
+                prices["F4"] = 17;
+
+                var pattern = /[A-Za-z ][A-Za-z ]*/g;
+                var num_patt = /^[0-9]{12,19}/g;
+                var qty_patt = /^0*[1-9][0-9]*/g;
+                var addr_patt = /^[0-9]*[A-Za-z ]*/g;
+                var f_name = document.getElementById("f_name").value;
+                var f_name_result = f_name.match(pattern);
+                var l_name = document.getElementById("l_name").value;
+                var l_name_result = l_name.match(pattern);
+                var creditcard = document.getElementById("creditcard").value;
+                var credit_result = creditcard.match(num_patt);
+                var qty = document.getElementById("qty").value;
+                var qty_result = qty.match(qty_patt);
+                var shipping_addr = document.getElementById("address").value;
+                var shipping_addr_result = shipping_addr.match(addr_patt);
+                var phone_number = document.getElementById("phone_number").value;
+                var email = document.getElementById("email").value;
+                var shipping_option = document.getElementById("regular").value;
+                var product_id = document.getElementById("p_id").value;
+
+                if (document.getElementById('1day').checked) {
+ 					shipping_option = document.getElementById('1day').value;
+				}
+				if (document.getElementById('2day').checked) {
+					shipping_option = document.getElementById('2day').value;
+				}
+
+                if (f_name.length != f_name_result[0].length) {
+                    alert("Error");
+                    location = location.reload();
+                } else if (l_name.length != l_name_result[0].length) {
+                	alert("Error");
+                    location = location.reload();
+                } else if (credit_result == null || creditcard.length != credit_result[0].length) {
+                    alert("Error");
+                    location = location.reload();
+                } else if (qty_result == null || qty.length != qty_result[0].length) {
+                    alert("Error");
+                    location = location.reload();
+                } else if (shipping_addr.length != shipping_addr_result[0].length) {
+                	alert("Error");
+                    location = location.reload();
+                } else if (phone_number.length != 7 && phone_number.length != 10) {
+                	alert("Error");
+                    location = location.reload();
+                } else if (!(product_id in products)) {
+                    alert("Error");
+                    location = location.reload();
+                } else {
+                    alert("Thank you for purchasing from us today!");
+                    location = "MainPage.html";
+                    submit_this(f_name, l_name, email, products[product_id], prices[product_id], qty, shipping_option);
+                }
+            
+            }
+                
+
+		</script>
+
+		<br></br>
+		<img id="img1" src="banner.jpg" >
+		<br></br>
+		<div><a href="MainPage.html", id="link">Home</a></div>
+		<div><a href="AboutUs.html", id="link">About Us</a></div>
+		<br></br>
+	</head>
+
+	<body>
+		<!--<p>
+			<img src="http://dreamatico.com/data_images/banana/banana-3.jpg" class="Main" alt="Banana"/>
+		</p>-->
+		<table align="center">
+			<tr>
+				<td><img src="http://sushistik.com.ua/image/data/Salmon.png" class="Main" alt="salmon"/></td>
+				<td width="300px"style="font-size:16px;"><b>Salmon</b> <br> Salmon, caught wild in the frigid waters of the North Pacific, this beautiful fish has the distinctive flavor of something fishy.
+				</td>
+			</tr>
+			
+		</table>
+
+		<table align="center">
+			<tr>
+				<td><img src="http://www.highlinerfoodservice.com/en/catalogue/product-1050125-2.jpg" alt="Cut salmon" /></td>
+				<td><img src="http://cdn.shopify.com/s/files/1/0226/6907/files/DSC_0288.jpg?12280429405815179038" alt="Fresh Salmon" /></td>
+				<td><img src="http://www.apparelmagazine.co.nz/wp-content/uploads/sites/2/2015/10/salmon-fillet.jpg" alt="fresh caught salmon" /></td>
+			</tr>
+		</table>
+
+		<br></br>
+		<div id="div2"><br></br></div>
+		<div id="div2" style="font-size:20px;font-weight:bold;width:80%;"> 
+			Description:
+				<ul> 
+					<li>From the frigid North Pacific Oceans around Alaska</li>
+					<li>Fresh caught, boat to table</li>
+					<li>Humane and fresh, never artificially dressed or displayed</li>
+					<li>Color: Pink</li>
+					<li>Amount of Salmon per order: 2</li>
+					<li>Product ID: M4</li>
+				</ul>
+		</div>
+
+
+		<br></br>
+		<div id="div1">
+			<b style="font-size:40px;"> Price: </b> $100.00 
+		</div>
+
+		
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br></br>
+		<br>
+		<form class="orderForm" onSubmit="return Validate();" method="post" align="left">
+			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
+			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
+			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
+			<label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
+			<label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
+			<label>Email</label> <input type="email" id="email" name="email" value="jdoe@gmail.com" required /> <br />
+			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
+			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+
+			<labeL>Shipping Option</label>
+				<label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label> 
+				<label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label> 
+				<label><input class="radiobutton" id="regular" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
+			<label><input type="submit" value="Purchase" /></label>
+			
+		</form>
+
+	</body>
+</html>
