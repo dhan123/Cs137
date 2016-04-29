@@ -1,61 +1,61 @@
 <!DOCTYPE html>
-<?php include ('testingconnectionpdo.php'); ?>
+<?php include ('connect.php'); ?>
 <html>
-	<head>
-		<style>
-			@font-face { font-family: Moon Flower; src: url('Moon Flower.ttf'); }
-			@font-face { font-family: Moon Flower; font-weight: bold; src: url('Moon Flower Bold.ttf');}
+    <head>
+        <style>
+            @font-face { font-family: Moon Flower; src: url('Moon Flower.ttf'); }
+            @font-face { font-family: Moon Flower; font-weight: bold; src: url('Moon Flower Bold.ttf');}
 
-			* {
-				font-family: Verdana;
-				font-size: 15px;
-			}
+            * {
+                font-family: Verdana;
+                font-size: 15px;
+            }
 
-			div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
-			#img1 {
-				margin-right: auto;
-				margin-left: auto;
-				display: block;
-				width: 1250px;
-				height: 400px;
-				text-align: center;
-				
-			}
-			#link {
-				font-family: Moon Flower;
-				color: gray;
-				text-decoration: none;
-				font-size: 80px;
-			}
-			img {
-				width: 200px;
-			}
-			.Main {
-				width: 500px;
-				display: block;
-				margin: 0 auto;
-				text-align: center;
-			}
+            div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
+            #img1 {
+                margin-right: auto;
+                margin-left: auto;
+                display: block;
+                width: 1250px;
+                height: 400px;
+                text-align: center;
+
+            }
+            #link {
+                font-family: Moon Flower;
+                color: gray;
+                text-decoration: none;
+                font-size: 80px;
+            }
+            img {
+                width: 200px;
+            }
+            .Main {
+                width: 500px;
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
             #div1{
-            	width: 80%;
-            	text-align: right;
-            	font-size: 40px;
-            	font-weight: normal;
+                width: 80%;
+                text-align: right;
+                font-size: 40px;
+                font-weight: normal;
             }
             #div2{
-            	width: 20%;
-            	text-align: left;
+                width: 20%;
+                text-align: left;
             }
             ul{
-            	font-weight: normal;
-            	font-size: 30px;
+                font-weight: normal;
+                font-size: 30px;
 
             }
             label{
-            	display: inline-block;
-            	float: left;
-            	clear: left;
-            	width: 150px;
+                display: inline-block;
+                float: left;
+                clear: left;
+                width: 150px;
             }
             input {
                 font-family: Moon Flower;
@@ -66,15 +66,15 @@
                 float:left;
             }
             input.radiobutton {
-            	display:inline-block;
-            	float:left;
-            	margin-left:1cm;
+                display:inline-block;
+                float:left;
+                margin-left:1cm;
             }
 
 
-		</style>
+        </style>
 
-		<script type="text/javascript">
+        <script type="text/javascript">
             function submit_this(firstname, lastname, email, item, price, quantity, shipping_option) {
                 //window.location("testingconnectionpdo.php")
 
@@ -129,17 +129,17 @@
                 var product_id = document.getElementById("p_id").value;
 
                 if (document.getElementById('1day').checked) {
- 					shipping_option = document.getElementById('1day').value;
-				}
-				if (document.getElementById('2day').checked) {
-					shipping_option = document.getElementById('2day').value;
-				}
+                    shipping_option = document.getElementById('1day').value;
+                }
+                if (document.getElementById('2day').checked) {
+                    shipping_option = document.getElementById('2day').value;
+                }
 
                 if (f_name.length != f_name_result[0].length) {
                     alert("Error");
                     location = location.reload();
                 } else if (l_name.length != l_name_result[0].length) {
-                	alert("Error");
+                    alert("Error");
                     location = location.reload();
                 } else if (credit_result == null || creditcard.length != credit_result[0].length) {
                     alert("Error");
@@ -148,10 +148,10 @@
                     alert("Error");
                     location = location.reload();
                 } else if (shipping_addr.length != shipping_addr_result[0].length) {
-                	alert("Error");
+                    alert("Error");
                     location = location.reload();
                 } else if (phone_number.length != 7 && phone_number.length != 10) {
-                	alert("Error");
+                    alert("Error");
                     location = location.reload();
                 } else if (!(product_id in products)) {
                     alert("Error");
@@ -165,24 +165,32 @@
             }
                 
 
-		</script>
+        </script>
 
-		<br></br>
-		<img id="img1" src="banner.jpg" >
-		<br></br>
-		<div><a href="MainPage.html", id="link">Home</a></div>
-		<div><a href="AboutUs.html", id="link">About Us</a></div>
-		<br></br>
-	</head>
+        <br></br>
+        <img id="img1" src="banner.jpg" >
+        <br></br>
+        <div><a href="MainPage.html", id="link">Home</a></div>
+        <div><a href="AboutUs.html", id="link">About Us</a></div>
+        <br></br>
+    </head>
 
-	<body>
-		<table align="center">
-			<tr>
-				<td><img src="http://www.followingthenerd.com/site/wp-content/uploads/apple1.jpg" class="Main" alt="Apple"/></td>
-				<td width="300px"style="font-size:16px;"><b>
+    <body>
+        <table align="center">
+            <tr>
+                <td><img src=
+                    <?php
+                        $myquery = "SELECT main_photo FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
+                        $main_photo = $conn->query($myquery);
+                        $result = $main_photo->fetch(PDO::FETCH_ASSOC);
+                        echo "'" . $result['main_photo'] . "'";
+                    ?> 
+			" class="Main" alt="<?php echo "productid:" . $_GET["productid"]; ?>"/></td>
+
+                <td width="300px"style="font-size:16px;"><b>
                     
                     <?php
-                        $myquery = "SELECT name FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT name FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $name = $conn->query($myquery);
                         $result = $name->fetch(PDO::FETCH_ASSOC);
                         echo $result['name'];
@@ -191,127 +199,127 @@
                 </b><br>
 
                 <?php
-                        $myquery = "SELECT description FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT description FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $description = $conn->query($myquery);
                         $result = $description->fetch(PDO::FETCH_ASSOC);
                         echo $result['description'];
                     ?>
-                
-				</td>
-			</tr>
-			
-		</table>
 
-		<table align="center">
-			<tr>
-				<td><img src=
+                </td>
+            </tr>
+
+        </table>
+
+        <table align="center">
+            <tr>
+                <td><img src=
 
                     <?php
-                        $myquery = "SELECT link1 FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT link1 FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $link1 = $conn->query($myquery);
                         $result = $link1->fetch(PDO::FETCH_ASSOC);
                         echo "'" . $result['link1'] . "'";
                     ?> 
 
 
-                    alt="apple1" /></td>
-				<td><img src=
+                    alt="<?php echo "productid:" . $_GET["productid"]; ?>" /></td>
+                <td><img src=
 
                     <?php
-                        $myquery = "SELECT link2 FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT link2 FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $link2 = $conn->query($myquery);
                         $result = $link2->fetch(PDO::FETCH_ASSOC);
                         echo "'" . $result['link2'] . "'";
                     ?> 
 
-                    alt="apple2" /></td>
-				<td><img src=
+                    alt="<?php echo "productid:" . $_GET["productid"]; ?>" /></td>
+                <td><img src=
 
                     <?php
-                        $myquery = "SELECT link3 FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT link3 FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $link3 = $conn->query($myquery);
                         $result = $link3->fetch(PDO::FETCH_ASSOC);
                         echo "'" . $result['link3'] . "'";
                     ?> 
 
-                    alt="apple3" /></td>
-			</tr>
-		</table>
+                    alt="<?php echo "productid:" . $_GET["productid"]; ?>" /></td>
+            </tr>
+        </table>
 
-		<br></br>
-		<div id="div2"><br></br></div>
-		<div id="div2" style="font-size:20px;font-weight:bold;width:80%;"> 
-			Description:
-				<ul> 
-					<li>From 
+        <br></br>
+        <div id="div2"><br></br></div>
+        <div id="div2" style="font-size:20px;font-weight:bold;width:80%;">
+            Description:
+                <ul>
+                    <li>From
                     <?php
-                        $myquery = "SELECT origin FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT origin FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $origin = $conn->query($myquery);
                         $result = $origin->fetch(PDO::FETCH_ASSOC);
                         echo $result['origin'];
-                    ?> 
+                    ?>
 
                     </li>
-					
-                    <li>Amount of apples per order: 
-                    
+
+                    <li>Amount of apples per order:
+
                     <?php
-                        $myquery = "SELECT amount FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT amount FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $amount = $conn->query($myquery);
                         $result = $amount->fetch(PDO::FETCH_ASSOC);
                         echo $result['amount'];
-                    ?> 
+                    ?>
 
                     </li>
-					<li>Product ID: 
+                    <li>Product ID:
 
                     <?php
-                        $myquery = "SELECT p_id FROM product WHERE name = 'apple'";
+                        $myquery = "SELECT p_id FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
                         $p_id = $conn->query($myquery);
                         $result = $p_id->fetch(PDO::FETCH_ASSOC);
                         echo $result['p_id'];
                     ?>
                     </li>
-				</ul>
-		</div>
+                </ul>
+        </div>
 
 
-		<br></br>
-		<div id="div1">
-			<b style="font-size:40px;"> Price: </b> $
+        <br></br>
+        <div id="div1">
+            <b style="font-size:40px;"> Price: </b> $
             <?php
 
-            $myquery = "SELECT price FROM product WHERE name = 'apple'";
+            $myquery = "SELECT price FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
             $price = $conn->query($myquery);
             $result = $price->fetch(PDO::FETCH_ASSOC);
             echo $result['price'];
-             ?> 
-		</div>
+             ?>
+        </div>
 
-		
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br></br>
-		<br>
-		<form class="orderForm" action="http://localhost/takehomeassignment/purchased.php" onSubmit="return Validate();" method="post" align="left">
-			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
-			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
-			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
-			<label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
-			<label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
-			<label>Email</label> <input type="email" id="email" name="email" value="jdoe@gmail.com" required /> <br />
-			<label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
-			<label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
-			
-			<labeL>Shipping Option</label>
-				<label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label> 
-				<label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label> 
-				<label><input class="radiobutton" id="regular" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
-			<label><input type="submit" value="Purchase" /></label>
-		</form>
 
-	</body>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br>
+        <form class="orderForm" action="http://localhost/takehomeassignment/purchased.php" onSubmit="return Validate();" method="post" align="left">
+            <label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
+            <label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
+            <label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
+            <label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
+            <label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
+            <label>Email</label> <input type="email" id="email" name="email" value="jdoe@gmail.com" required /> <br />
+            <label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
+            <label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
+
+            <labeL>Shipping Option</label>
+                <label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label>
+                <label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label>
+                <label><input class="radiobutton" id="regular" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
+            <label><input type="submit" value="Purchase" /></label>
+        </form>
+
+    </body>
 </html>
