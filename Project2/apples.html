@@ -75,7 +75,7 @@
 
 		<script type="text/javascript">
             function submit_this(firstname, lastname, email, item, price, quantity, shipping_option) {
-                window.open('mailto:' + email + '?subject=NOMz order information' + '&body=' + 'Hi ' + firstname + " " + lastname + ',%0D%0A%0D%0AThank you for your purchase from NOMz. Here is an order confirmation for you. %0D%0A%0D%0AYou have ordered ' + quantity + ' ' + item + '. %0D%0AYour Total is $' + price * quantity + '.' + '%0D%0A%0D%0AYour shipment is scheduled to arrive through '+ shipping_option + ' shipping.');
+                //window.location("testingconnectionpdo.php")
 
             }
 
@@ -220,7 +220,7 @@
 		<br></br>
 		<br></br>
 		<br>
-		<form class="orderForm" onSubmit="return Validate();" method="post" align="left">
+		<form class="orderForm" action="http://localhost/takehomeassignment/purchased.php" onSubmit="return Validate();" method="post" align="left">
 			<label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
 			<label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
 			<label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
