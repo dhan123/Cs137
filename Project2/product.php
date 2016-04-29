@@ -304,7 +304,7 @@
         <br></br>
         <br></br>
         <br>
-        <form class="orderForm" action="http://localhost/takehomeassignment/purchased.php" onSubmit="return Validate();" method="post" align="left">
+        <form class="orderForm" action="purchased.php" onSubmit="return Validate();" method="post" align="left">
             <label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
             <label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
             <label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
