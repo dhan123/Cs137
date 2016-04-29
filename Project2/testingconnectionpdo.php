@@ -1,5 +1,5 @@
 <?php
-$servername = "sylvester-mccoy-v3:3306/";
+$servername = "sylvester-mccoy-v3.ics.uci.edu:3306/";
 $username = "inf124grp31";
 $password = "bRU@Eph2";
 $database = "inf124grp31";
