@@ -394,3 +394,4 @@
 	</script>
     </body>
 </html>
+<?php $conn = null; ?>
