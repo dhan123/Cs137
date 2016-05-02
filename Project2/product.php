@@ -16,8 +16,9 @@
                 margin-right: auto;
                 margin-left: auto;
                 display: block;
-                width: 1250px;
-                height: 400px;
+	 	max-width: 100%;
+                width: auto;
+                height: auto;
                 text-align: center;
 
             }
@@ -74,6 +75,7 @@
 
         </style>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"> </script>
         <script type="text/javascript">
             function submit_this(firstname, lastname, email, item, price, quantity, shipping_option) {
                 //window.location("testingconnectionpdo.php")
@@ -112,7 +114,8 @@
                 var pattern = /[A-Za-z ][A-Za-z ]*/g;
                 var num_patt = /^[0-9]{12,19}/g;
                 var qty_patt = /^0*[1-9][0-9]*/g;
-                var addr_patt = /^[0-9]*[A-Za-z ]*/g;
+                var addr_patt = /^[0-9]+[ ]+[A-Za-z ]+/g;
+		var email_patt = /^[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z0-9]+/g;
                 var f_name = document.getElementById("f_name").value;
                 var f_name_result = f_name.match(pattern);
                 var l_name = document.getElementById("l_name").value;
@@ -123,8 +126,9 @@
                 var qty_result = qty.match(qty_patt);
                 var shipping_addr = document.getElementById("address").value;
                 var shipping_addr_result = shipping_addr.match(addr_patt);
-                var phone_number = document.getElementById("phone_number").value;
+		var phone_number = document.getElementById("phone_number").value;
                 var email = document.getElementById("email").value;
+		var email_result = email.match(email_patt);
                 var shipping_option = document.getElementById("regular").value;
                 var product_id = document.getElementById("p_id").value;
 
@@ -134,38 +138,82 @@
                 if (document.getElementById('2day').checked) {
                     shipping_option = document.getElementById('2day').value;
                 }
-
-                if (f_name.length != f_name_result[0].length) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (l_name.length != l_name_result[0].length) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (credit_result == null || creditcard.length != credit_result[0].length) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (qty_result == null || qty.length != qty_result[0].length) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (shipping_addr.length != shipping_addr_result[0].length) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (phone_number.length != 7 && phone_number.length != 10) {
-                    alert("Error");
-                    location = location.reload();
-                } else if (!(product_id in products)) {
-                    alert("Error");
-                    location = location.reload();
-                } else {
+		if ( !(product_id in products) ) {
+		    alert("Error: invalid product id");
+		    return false;	
+		} else if (qty_result == null || qty.length != qty_result[0].length) {
+                    alert("Error: invalid quantity");
+                    return false;
+                } else if ( f_name_result == null || f_name.length != f_name_result[0].length) {
+                    alert("Error: invalid first name");
+                    return false;
+                } else if ( l_name_result  == null || l_name.length != l_name_result[0].length) {
+                    alert("Error: invalid last name");
+                    return false;
+	        } else if (phone_number.length != 7 && phone_number.length != 10) {
+                    alert("Error: invalid phone number");
+                    return false;
+		} else if (email_result == null || email.length == 0) {
+		    alert("Error: invalid email address");
+		    return false;
+		} else if (shipping_addr_result == null || shipping_addr.length != shipping_addr_result[0].length) {
+                    alert("Error: invalid shipping address");
+                    return false;
+		} else if (credit_result == null || creditcard.length != credit_result[0].length) {
+                    alert("Error: invalid credit card number");
+                    return false;
+                              } else {
                     alert("Thank you for purchasing from us today!");
-                    location = "MainPage.html";
                     submit_this(f_name, l_name, email, products[product_id], prices[product_id], qty, shipping_option);
+                    return true;
                 }
             
             }
                 
-
+	    function showHint(str) {
+		if (str.length == 0) {
+		    document.getElementById("txtHint").innerHTML = "";
+		    return;
+	  	} else {
+		    var xmlhttp = new XMLHttpRequest();
+		    xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4&& xmlhttp.status == 200) {
+			    document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+			}
+		    };
+		    xmlhttp.open("GET","gethint.php?q=" + str, true);
+		    xmlhttp.send();
+		}
+	    }
+	
         </script>
+
+
+	<?php
+	/*
+            session_start();
+	    if(isset($_POST)) {
+		if (strlen($_POST['f_name']) < 10) {
+		    $_SESSION['errors]['f_name'] = 'First name is too short';
+		}
+	
+		if (count($_SESSION['errors']) > 0 ) {
+		    if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+			echo json_encode($_SESSION['errors']);
+			exit;
+		    }
+		    echo "<ul>";
+		    foreach($_SESION['errors'] as $key => $value) {
+			echo "<li>" . $value . "</li>";
+		    }
+		    echo "</ul>; exit;
+		} else {
+
+
+
+		}
+	    } */	  
+	?> 
 
         <br></br>
         <img id="img1" src="banner.jpg" >
@@ -261,7 +309,15 @@
 
                     </li>
 
-                    <li>Amount of apples per order:
+                    <li>Amount of 
+
+                    <?php
+                        $myquery = "SELECT name FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
+                        $name = $conn->query($myquery);
+                        $result = $name->fetch(PDO::FETCH_ASSOC);
+                        echo $result['name'];
+                    ?>
+			per order:
 
                     <?php
                         $myquery = "SELECT amount FROM product WHERE P_Id = '" .  $_GET["productid"] . "';";
@@ -305,8 +361,10 @@
         <br></br>
         <br>
         <form class="orderForm" action="purchased.php" onSubmit="return Validate();" method="post" align="left">
-            <label>Product ID</label><input id="p_id" type="textbox" name="p_id" required /> <br />
-            <label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
+            <label>Product ID</label><input id="p_id" type="textbox" onkeyup="showHint(this.value)" name="p_id" required /> <br />
+	    <p>Suggestions: <span id="txtHint"></span></p>            
+
+	    <label>Quantity</label> <input id="qty" type="number" name ="quantity" value="1" required /> <br />
             <label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
             <label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
             <label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />
@@ -314,12 +372,25 @@
             <label>Shipping Address</label><input id="address" type="textbox" name="address" required /> <br />
             <label>Credit Card</label> <input id="creditcard" type="textbox" name="creditcard" value="12345123456789" required /> <br />
 
-            <labeL>Shipping Option</label>
+            <label>Shipping Option</label>
                 <label><input class="radiobutton" id="1day" type="radio" name="shipping" value="1 Day"/>1 Day</label>
                 <label><input class="radiobutton" id="2day" type="radio" name="shipping" value="2 Day"/>2 Day</label>
                 <label><input class="radiobutton" id="regular" type="radio" name="shipping" value="Regular" checked="checked" />Regular</label><br />
             <label><input type="submit" value="Purchase" /></label>
         </form>
+	<br></br><br></br>
+	<p id="shipprice">Shipping Price: $5.00</p>
 
+	<script>
+	    $('input[name="shipping"]').on('change',function() {
+		if ($(this).val()=='1 Day') {
+		    $("#shipprice").text("Shipping Price: $15.00");
+		} else if ($(this).val()=='2 Day') {
+		    $("#shipprice").text("Shipping Price: $10.00");
+		} else {
+		    $("#shipprice").text("Shipping Price: $5.00");
+		}
+	    });
+	</script>
     </body>
 </html>
