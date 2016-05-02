@@ -5,3 +5,8 @@ Group 31:
     Daniel Han 79941173
 
 Home page URL: http://andromeda-31.ics.uci.edu:6941/project2/MainPage.html
+
+
+Ajax Features:
+    1. Suggestions appear when inputting Product Id
+    2. Shipping rate changes according to shipping option
