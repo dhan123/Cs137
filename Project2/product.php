@@ -130,7 +130,7 @@
                 var email = document.getElementById("email").value;
 		var email_result = email.match(email_patt);
                 var shipping_option = document.getElementById("regular").value;
-                var product_id = document.getElementById("p_id").value;
+                var product_id = document.getElementById("p_id").value.toUpperCase();
 
                 if (document.getElementById('1day').checked) {
                     shipping_option = document.getElementById('1day').value;
