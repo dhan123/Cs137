@@ -1,0 +1,42 @@
+CS137 Project 3 Requirements
+------------------------------
+Prerequisites:
+	1) Set up Apache Tomcat server on andromeda
+	  L use Tomcat 8.0.33 (latest stable verison)
+	2) Make sure that in Project 2, we were able to connect to the database using JDBC conneciton
+	3) Start with new installation of Tomcat and copy Project 2 over
+
+Project: 
+	1) Use two servlets and display their output to make the homepage of our site
+		> Servlet 1
+			- Display the products obtained from the backend databse
+		> Servlet 2
+			- Use session tracking to display the last 5 products the user has visited (viewed in the product details page)
+				-> if less than 5, just display whatever info you've stored up to this point
+
+	2) Create the product details pages using servlets
+		> Page should take a product identifier as a parameter in the URL
+		> Shows product details after getting relevant info from database
+		> DO NOT HAVE AN ORDER FORM - REPLACE WITH "ADD TO CART" BUTTON
+			- use sessions to store the products into shopping cart
+
+	3) Use servlet's context object
+		> Monitor and display how many other customers are viewing a specific product and show this info on the product details page
+
+	4) Use servlets to create a "check out" page
+		> Allows users to place their order
+		> Contains all products in the shopping cart and the total price
+		> Include a form that allows the user to:
+			-> Enter shipping information: name, shipping address, phone number, credit card number, etc.
+			-> Submit the order for storage in the backend databse
+			-> On successful submission, forward to the order details page (part 5)
+
+	5) Using JSP create an "order details" page
+		> Takes an order identifier as a parameter in the URL
+			- queries the databse to show all the info about the order (products ordered and consignee details)
+
+
+	EXTRA CREDIT) 
+		> on the "check out" page, allow the user to:
+			- change the quantity of items in the shopping cart and display the updated price
+			- remove items from the shopping cart and display the updated price
