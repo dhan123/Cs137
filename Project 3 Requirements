@@ -7,6 +7,13 @@ Prerequisites:
 	3) Start with new installation of Tomcat and copy Project 2 over
 
 Project: 
+
+	>> FIGURE OUT JDBC CONNECTION
+	>> history.java —> in order to compile correctly, we need to figure out how to properly import javax.servlet and java.servlet.http
+		- requires us to include /apache-tomcat-8.0.35/lib/servlet-api.jar to the CLASSPATH
+
+
+
 	1) Use two servlets and display their output to make the homepage of our site
 		> Servlet 1
 			- Display the products obtained from the backend database
