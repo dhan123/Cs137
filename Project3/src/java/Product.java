@@ -67,6 +67,9 @@ public class Product extends HttpServlet {
 //            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
 //                "inf124grp31",
 //                "bRU@Eph2");
+//            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
+//                "inf124grp31",
+//                "bRU@Eph2");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
             // If the connection was successful, create a result set object
             Statement stmt = null;
