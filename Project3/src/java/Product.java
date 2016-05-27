@@ -72,7 +72,7 @@ public class Product extends HttpServlet {
             Statement stmt = null;
             ResultSet rs = null;
             //SQL query command
-            String SQL = "SELECT * FROM product";
+            String SQL = "SELECT * FROM product WHERE P_Id = '" + request.getParameter("pid") + "'";
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL);
             
@@ -84,7 +84,6 @@ public class Product extends HttpServlet {
             try (PrintWriter out = response.getWriter()) {
                 rs.next();
                 out.println("<!DOCTYPE html>\n" +
-"<?php include ('connect.php'); ?>\n" +
 "<html>\n" +
 "    <head>\n" +
 "        <style>\n" +
@@ -265,7 +264,7 @@ public class Product extends HttpServlet {
 "            <tr>\n" +
 "                <td><img src=\n" +
                     rs.getString("main_photo") +
-"			\" class=\"Main\" alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\"/></td>\n" +
+"			\" class=\"Main\" alt=\"productid:\" "+ rs.getString("p_id") + "/></td>\n" +
 "\n" +
 "                <td width=\"300px\"style=\"font-size:16px;\"><b>\n" +
 "                    \n" +
