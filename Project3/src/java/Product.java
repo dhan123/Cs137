@@ -95,7 +95,7 @@ public class Product extends HttpServlet {
 "                font-size: 15px;\n" +
 "            }\n" +
 "\n" +
-"            div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}\n" +
+"            div.divLinks { width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}\n" +
 "            #img1 {\n" +
 "                margin-right: auto;\n" +
 "                margin-left: auto;\n" +
@@ -123,12 +123,14 @@ public class Product extends HttpServlet {
 "            #div1{\n" +
 "                width: 80%;\n" +
 "                text-align: right;\n" +
+"                padding-right: 25%;\n" +                  
 "                font-size: 40px;\n" +
 "                font-weight: normal;\n" +
 "            }\n" +
 "            #div2{\n" +
 "                width: 20%;\n" +
 "                text-align: left;\n" +
+"                padding-left: 25%;\n" +                           
 "            }\n" +
 "            ul{\n" +
 "                font-weight: normal;\n" +
@@ -154,6 +156,15 @@ public class Product extends HttpServlet {
 "                float:left;\n" +
 "                margin-left:1cm;\n" +
 "            }\n" +
+"            button {\n" +
+"                display: block;\n" + 
+"                margin: 0 auto;\n" + 
+"            }\n" +    
+"            #buttonWrapper {\n" + 
+"               position: absolute;\n" +
+"               left: 0;\n" + 
+"               right: 0;\n" +                        
+"            }\n" + 
 "\n" +
 "\n" +
 "        </style>\n" +
@@ -254,8 +265,8 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <img id=\"img1\" src=\"banner.jpg\" >\n" +
 "        <br></br>\n" +
-"        <div><a href=\"MainPage.html\", id=\"link\">Home</a></div>\n" +
-"        <div><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"MainPage.html\", id=\"link\">Home</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
 "        <br></br>\n" +
 "    </head>\n" +
 "\n" +
@@ -266,7 +277,7 @@ public class Product extends HttpServlet {
                     rs.getString("main_photo") +
 "			\" class=\"Main\" alt=\"productid: "+ rs.getString("p_id") + "/></td>\n" +
 "\n" +
-"                <td width=\"300px\"style=\"font-size:16px;\"><b>\n" +
+"                <td width=\"300px\"style=\"font-size:16px; left-padding:20%; right-padding:20%;\"><b>\n" +
 "                    \n" + rs.getString("name") + "\n" + 
 "\n" +
 "                </b><br>\n" +
@@ -371,11 +382,13 @@ public class Product extends HttpServlet {
 "\n" +
 "        <br></br>\n" +
 "        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
+
 "        <br>\n" + 
+"        <div id=\"buttonWrapper\" style=\"text-align: center;\">\n" +  
+"           <form action=\"\" method=\"post\"\n" +
+"               <button style=\"text-align: center; width:150px;\" name=\"cartButton\" value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
+"           </form>\n" +                        
+"        </div>\n" +                         
 "    </body>\n" +
 "</html>");
             }
