@@ -64,6 +64,7 @@ public class Product extends HttpServlet {
             // password. Remember users have access to a specific tabel in the 
             // database.
             // URL: jdbc:mysql://<host_name>/<database_name>
+<<<<<<< HEAD
 //            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
 //                "inf124grp31",
 //                "bRU@Eph2");
@@ -71,11 +72,17 @@ public class Product extends HttpServlet {
 //                "inf124grp31",
 //                "bRU@Eph2");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
+=======
+            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
+                "inf124grp31",
+                "bRU@Eph2");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
+>>>>>>> d356bb7f84cb6f9bb87bbef37fb0a55b3735cc4c
             // If the connection was successful, create a result set object
             Statement stmt = null;
             ResultSet rs = null;
             //SQL query command
-            String SQL = "SELECT * FROM product";
+            String SQL = "SELECT * FROM product WHERE P_Id = '" + request.getParameter("pid") + "'";
             stmt = con.createStatement();
             rs = stmt.executeQuery(SQL);
             
@@ -87,7 +94,6 @@ public class Product extends HttpServlet {
             try (PrintWriter out = response.getWriter()) {
                 rs.next();
                 out.println("<!DOCTYPE html>\n" +
-"<?php include ('connect.php'); ?>\n" +
 "<html>\n" +
 "    <head>\n" +
 "        <style>\n" +
@@ -99,7 +105,7 @@ public class Product extends HttpServlet {
 "                font-size: 15px;\n" +
 "            }\n" +
 "\n" +
-"            div{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}\n" +
+"            div.divLinks { width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}\n" +
 "            #img1 {\n" +
 "                margin-right: auto;\n" +
 "                margin-left: auto;\n" +
@@ -127,12 +133,14 @@ public class Product extends HttpServlet {
 "            #div1{\n" +
 "                width: 80%;\n" +
 "                text-align: right;\n" +
+"                padding-right: 25%;\n" +                  
 "                font-size: 40px;\n" +
 "                font-weight: normal;\n" +
 "            }\n" +
 "            #div2{\n" +
 "                width: 20%;\n" +
 "                text-align: left;\n" +
+"                padding-left: 25%;\n" +                           
 "            }\n" +
 "            ul{\n" +
 "                font-weight: normal;\n" +
@@ -158,6 +166,15 @@ public class Product extends HttpServlet {
 "                float:left;\n" +
 "                margin-left:1cm;\n" +
 "            }\n" +
+"            button {\n" +
+"                display: block;\n" + 
+"                margin: 0 auto;\n" + 
+"            }\n" +    
+"            #buttonWrapper {\n" + 
+"               position: absolute;\n" +
+"               left: 0;\n" + 
+"               right: 0;\n" +                        
+"            }\n" + 
 "\n" +
 "\n" +
 "        </style>\n" +
@@ -258,8 +275,8 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <img id=\"img1\" src=\"banner.jpg\" >\n" +
 "        <br></br>\n" +
-"        <div><a href=\"MainPage.html\", id=\"link\">Home</a></div>\n" +
-"        <div><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"MainPage.html\", id=\"link\">Home</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
 "        <br></br>\n" +
 "    </head>\n" +
 "\n" +
@@ -267,26 +284,15 @@ public class Product extends HttpServlet {
 "        <table align=\"center\">\n" +
 "            <tr>\n" +
 "                <td><img src=\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT main_photo FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $main_photo = $conn->query($myquery);\n" +
-"                        $result = $main_photo->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo \"'\" . $result['main_photo'] . \"'\";\n" +
-"                    ?> \n" +
-"			\" class=\"Main\" alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\"/></td>\n" +
+                    rs.getString("main_photo") +
+"			\" class=\"Main\" alt=\"productid: "+ rs.getString("p_id") + "/></td>\n" +
 "\n" +
-"                <td width=\"300px\"style=\"font-size:16px;\"><b>\n" +
-"                    \n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT name FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $name = $conn->query($myquery);\n" +
-"                        $result = $name->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo $result['name'];\n" +
-"                    ?>\n" +
+"                <td width=\"300px\"style=\"font-size:16px; left-padding:20%; right-padding:20%;\"><b>\n" +
+"                    \n" + rs.getString("name") + "\n" + 
 "\n" +
 "                </b><br>\n" +
 "\n" +
-"                p\n" + rs.getString("description") + 
+"                \n" + rs.getString("description") + 
 "                    \n" +
 "\n" +
 "                </td>\n" +
@@ -300,27 +306,31 @@ public class Product extends HttpServlet {
 "\n" + rs.getString("link1") +
 "\n" +
 "\n" +
-"                    alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\" /></td>\n" +
+"                    alt=\"productid: "+ rs.getString("p_id") + "\"/></td>\n" +
+"                <td><img src=\n" +
+                        
+                        
+                        rs.getString("link2") + "\n" +
+"\n" +
+//"                    <?php\n" +
+//"                        $myquery = \"SELECT link2 FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"                        $link2 = $conn->query($myquery);\n" +
+//"                        $result = $link2->fetch(PDO::FETCH_ASSOC);\n" +
+//"                        echo \"'\" . $result['link2'] . \"'\";\n" +
+//"                    ?> \n" +
+"\n" +
+"                    alt=\"productid: "+ rs.getString("p_id") + "\"/></td>\n" +
 "                <td><img src=\n" +
 "\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT link2 FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $link2 = $conn->query($myquery);\n" +
-"                        $result = $link2->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo \"'\" . $result['link2'] . \"'\";\n" +
-"                    ?> \n" +
+                        rs.getString("link3") + "\n" +
+//"                    <?php\n" +
+//"                        $myquery = \"SELECT link3 FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"                        $link3 = $conn->query($myquery);\n" +
+//"                        $result = $link3->fetch(PDO::FETCH_ASSOC);\n" +
+//"                        echo \"'\" . $result['link3'] . \"'\";\n" +
+//"                    ?> \n" +
 "\n" +
-"                    alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\" /></td>\n" +
-"                <td><img src=\n" +
-"\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT link3 FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $link3 = $conn->query($myquery);\n" +
-"                        $result = $link3->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo \"'\" . $result['link3'] . \"'\";\n" +
-"                    ?> \n" +
-"\n" +
-"                    alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\" /></td>\n" +
+"                    alt=\"productid: "+ rs.getString("p_id") + "\"/></td>\n" +
 "            </tr>\n" +
 "        </table>\n" +
 "\n" +
@@ -330,33 +340,37 @@ public class Product extends HttpServlet {
 "            Description:\n" +
 "                <ul>\n" +
 "                    <li>From\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT origin FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $origin = $conn->query($myquery);\n" +
-"                        $result = $origin->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo $result['origin'];\n" +
-"                    ?>\n" +
+                        rs.getString("origin") + "\n" + 
+//"                    <?php\n" +
+//"                        $myquery = \"SELECT origin FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"                        $origin = $conn->query($myquery);\n" +
+//"                        $result = $origin->fetch(PDO::FETCH_ASSOC);\n" +
+//"                        echo $result['origin'];\n" +
+//"                    ?>\n" +
 "\n" +
 "                    </li>\n" +
 "\n" +
 "                    <li>Amount of apples per order:\n" +
 "\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT amount FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $amount = $conn->query($myquery);\n" +
-"                        $result = $amount->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo $result['amount'];\n" +
-"                    ?>\n" +
+                        rs.getString("amount") + "\n" + 
+//"                    <?php\n" +
+//"                        $myquery = \"SELECT amount FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"                        $amount = $conn->query($myquery);\n" +
+//"                        $result = $amount->fetch(PDO::FETCH_ASSOC);\n" +
+//"                        echo $result['amount'];\n" +
+//"                    ?>\n" +
 "\n" +
 "                    </li>\n" +
-"                    <li>Product ID:\n" +
+"                    <li>Product ID: \n" +
 "\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT p_id FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $p_id = $conn->query($myquery);\n" +
-"                        $result = $p_id->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo $result['p_id'];\n" +
-"                    ?>\n" +
+                        
+                     rs.getString("p_id") + "\n" + 
+//"                    <?php\n" +
+//"                        $myquery = \"SELECT p_id FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"                        $p_id = $conn->query($myquery);\n" +
+//"                        $result = $p_id->fetch(PDO::FETCH_ASSOC);\n" +
+//"                        echo $result['p_id'];\n" +
+//"                    ?>\n" +
 "                    </li>\n" +
 "                </ul>\n" +
 "        </div>\n" +
@@ -365,40 +379,26 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <div id=\"div1\">\n" +
 "            <b style=\"font-size:40px;\"> Price: </b> $\n" +
-"            <?php\n" +
-"\n" +
-"            $myquery = \"SELECT price FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"            $price = $conn->query($myquery);\n" +
-"            $result = $price->fetch(PDO::FETCH_ASSOC);\n" +
-"            echo $result['price'];\n" +
-"             ?>\n" +
+//"            <?php\n" +
+//"\n" +
+             rs.getString("price") + "\n" +
+//"            $myquery = \"SELECT price FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
+//"            $price = $conn->query($myquery);\n" +
+//"            $result = $price->fetch(PDO::FETCH_ASSOC);\n" +
+//"            echo $result['price'];\n" +
+//"             ?>\n" +
 "        </div>\n" +
 "\n" +
 "\n" +
 "        <br></br>\n" +
 "        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
-"        <br></br>\n" +
-"        <br>\n" +
-"        <form class=\"orderForm\" action=\"purchased.php\" onSubmit=\"return Validate();\" method=\"post\" align=\"left\">\n" +
-"            <label>Product ID</label><input id=\"p_id\" type=\"textbox\" name=\"p_id\" required /> <br />\n" +
-"            <label>Quantity</label> <input id=\"qty\" type=\"number\" name =\"quantity\" value=\"1\" required /> <br />\n" +
-"            <label>First Name</label><input id=\"f_name\" type=\"textbox\" name=\"f_name\" value=\"John\" required /> <br />\n" +
-"            <label>Last Name</label><input id=\"l_name\" type=\"textbox\" name=\"l_name\" value=\"Doe\" required /> <br />\n" +
-"            <label>Phone Number</label><input id=\"phone_number\" type=\"number\" name=\"phone_number\" required /> <br />\n" +
-"            <label>Email</label> <input type=\"email\" id=\"email\" name=\"email\" value=\"jdoe@gmail.com\" required /> <br />\n" +
-"            <label>Shipping Address</label><input id=\"address\" type=\"textbox\" name=\"address\" required /> <br />\n" +
-"            <label>Credit Card</label> <input id=\"creditcard\" type=\"textbox\" name=\"creditcard\" value=\"12345123456789\" required /> <br />\n" +
-"\n" +
-"            <labeL>Shipping Option</label>\n" +
-"                <label><input class=\"radiobutton\" id=\"1day\" type=\"radio\" name=\"shipping\" value=\"1 Day\"/>1 Day</label>\n" +
-"                <label><input class=\"radiobutton\" id=\"2day\" type=\"radio\" name=\"shipping\" value=\"2 Day\"/>2 Day</label>\n" +
-"                <label><input class=\"radiobutton\" id=\"regular\" type=\"radio\" name=\"shipping\" value=\"Regular\" checked=\"checked\" />Regular</label><br />\n" +
-"            <label><input type=\"submit\" value=\"Purchase\" /></label>\n" +
-"        </form>\n" +
-"\n" +
+
+"        <br>\n" + 
+"        <div id=\"buttonWrapper\" style=\"text-align: center;\">\n" +  
+"           <form action=\"\" method=\"post\"\n" +
+"               <button style=\"text-align: center; width:150px;\" name=\"cartButton\" value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
+"           </form>\n" +                        
+"        </div>\n" +                         
 "    </body>\n" +
 "</html>");
             }
