@@ -109,35 +109,35 @@ public class MainPage extends HttpServlet {
 "				<td class=\"category\">Fruits</td>\n" +
 "			</tr>\n" +
 "			<tr>\n" +
-"				<td><a href=\"Product?pid=f1\" name=\"m1\"><img class=\"table\" src=\"http://www.seriouseats.com/images/2015/04/20150408-canadian-bacon-taste-test.jpg\" alt=\"Bacon\"/></a><p>$50.00</p><p>Canadian Bacon</p></td>\n" +
+"				<td><a href=\"Product?pid=m1\" name=\"m1\"><img class=\"table\" src=\"http://www.seriouseats.com/images/2015/04/20150408-canadian-bacon-taste-test.jpg\" alt=\"Bacon\"/></a><p>$50.00</p><p>Canadian Bacon</p></td>\n" +
 "\n" +
-"				<td><a href=\"LastFive\" name=\"v1\"><img class=\"table\" src=\"https://dbjpq4m8xws63.cloudfront.net/gallery/article/136129-2669\" alt=\"Baby Carrots\"/></a><p>$5.00</p><p>Baby Carrots</p></td>\n" +
+"				<td><a href=\"Product?pid=v1\" name=\"v1\"><img class=\"table\" src=\"https://dbjpq4m8xws63.cloudfront.net/gallery/article/136129-2669\" alt=\"Baby Carrots\"/></a><p>$5.00</p><p>Baby Carrots</p></td>\n" +
 "\n" +
-"				<td><a href=\"product.php?productid=F1\"><img class=\"table\" src=\"http://www.followingthenerd.com/site/wp-content/uploads/apple1.jpg\" alt=\"Apple\"/></a><p>$9.00</p><p>Apples</p></td>\n" +
+"				<td><a href=\"Product?pid=f1\" name=\"f1\"><img class=\"table\" src=\"http://www.followingthenerd.com/site/wp-content/uploads/apple1.jpg\" alt=\"Apple\"/></a><p>$9.00</p><p>Apples</p></td>\n" +
 "			</tr>\n" +
 "\n" +
 "            <tr>\n" +
-"				<td><a href=\"product.php?productid=M2\"><img class=\"table\" src=\"http://www.glatt-organics.com/wp-content/uploads/2013/08/iStock_000010753409Large.jpg\" alt=\"Chicken Breast\"/></a><p>$30.00</p><p>Chicken Breast</p></td>\n" +
+"				<td><a href=\"Product?pid=m2\" name=\"m2\"><img class=\"table\" src=\"http://www.glatt-organics.com/wp-content/uploads/2013/08/iStock_000010753409Large.jpg\" alt=\"Chicken Breast\"/></a><p>$30.00</p><p>Chicken Breast</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=V2\"><img class=\"table\" src=\"http://www.specialtyproduce.com/sppics/581.png\" alt=\"Romaine Lettuce\"/></a><p>$10.00</p><p>Romaine Lettuce</p></td>\n" +
+"                <td><a href=\"Product?pid=v2\" name=\"v2\"><img class=\"table\" src=\"http://www.specialtyproduce.com/sppics/581.png\" alt=\"Romaine Lettuce\"/></a><p>$10.00</p><p>Romaine Lettuce</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=F2\"><img class=\"table\" src=\"http://dreamatico.com/data_images/banana/banana-3.jpg\" alt=\"Banana\"/></a><p>$1.00</p><p>Bananas</p></td>\n" +
+"                <td><a href=\"Product?pid=f2\" name=\"f2\"><img class=\"table\" src=\"http://dreamatico.com/data_images/banana/banana-3.jpg\" alt=\"Banana\"/></a><p>$1.00</p><p>Bananas</p></td>\n" +
 "            </tr>\n" +
 "\n" +
 "            <tr>\n" +
-"				<td><a href=\"product.php?productid=M2\"><img class=\"table\" src=\"http://cdn1.bigcommerce.com/n-ww20x/uvsd1rv/products/80/images/280/Ribeye_Steak__19258.1385953288.1280.1280.jpg?c=2\" alt=\"Rib Eye Steak\"/></a><p>$70.00</p><p>Rib Eye Steak</p></td>\n" +
+"				<td><a href=\"Product?pid=m3\" name=\"m3\"><img class=\"table\" src=\"http://cdn1.bigcommerce.com/n-ww20x/uvsd1rv/products/80/images/280/Ribeye_Steak__19258.1385953288.1280.1280.jpg?c=2\" alt=\"Rib Eye Steak\"/></a><p>$70.00</p><p>Rib Eye Steak</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=V3\"><img class=\"table\" src=\"http://www.kontrolmag.com/wp-content/uploads/2015/05/Spinach.jpg\" alt=\"Spinach\"/></a></p>$33.00</p><p>Spinach</p></td>\n" +
+"                <td><a href=\"Product?pid=v3\" name=\"v3\"><img class=\"table\" src=\"http://www.kontrolmag.com/wp-content/uploads/2015/05/Spinach.jpg\" alt=\"Spinach\"/></a></p>$33.00</p><p>Spinach</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=F3\"><img class=\"table\" src=\"https://upload.wikimedia.org/wikipedia/commons/4/43/Pitaya_cross_section_ed2.jpg\" alt=\"Dragonfruit\"/></a></p>$44.00</p><p>Dragonfruit</p></td>\n" +
+"                <td><a href=\"Product?pid=f3\" name=\"f3\"><img class=\"table\" src=\"https://upload.wikimedia.org/wikipedia/commons/4/43/Pitaya_cross_section_ed2.jpg\" alt=\"Dragonfruit\"/></a></p>$44.00</p><p>Dragonfruit</p></td>\n" +
 "            </tr>\n" +
 "\n" +
 "            <tr>\n" +
-"				<td><a href=\"product.php?productid=M4\"><img class=\"table\" src=\"http://sushistik.com.ua/image/data/Salmon.png\" alt=\"Salmon\"/></a><p>$100.00</p><p>Salmon</p></td>\n" +
+"				<td><a href=\"Product?pid=m4\" name=\"m4\"><img class=\"table\" src=\"http://sushistik.com.ua/image/data/Salmon.png\" alt=\"Salmon\"/></a><p>$100.00</p><p>Salmon</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=V4\"><img class=\"table\" src=\"http://www.legacygreens.com/wp-content/uploads/2016/03/Yellow-onion.jpg\" alt=\"Yellow Onion\"/></a><p>$12.00</p><p>Yellow Onions</p></td>\n" +
+"                <td><a href=\"Product?pid=v4\" name=\"v4\"><img class=\"table\" src=\"http://www.legacygreens.com/wp-content/uploads/2016/03/Yellow-onion.jpg\" alt=\"Yellow Onion\"/></a><p>$12.00</p><p>Yellow Onions</p></td>\n" +
 "\n" +
-"                <td><a href=\"product.php?productid=F4\"><img class=\"table\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg\" alt=\"Oranges\"/></a><p>$17.00</p><p>Oranges</p></td>\n" +
+"                <td><a href=\"Product?pid=f4\" name=\"f4\"><img class=\"table\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg\" alt=\"Oranges\"/></a><p>$17.00</p><p>Oranges</p></td>\n" +
 "            </tr>\n" +
 "		</table>\n" +
 "	</p>\n" +
