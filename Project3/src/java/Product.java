@@ -64,10 +64,10 @@ public class Product extends HttpServlet {
             // password. Remember users have access to a specific tabel in the 
             // database.
             // URL: jdbc:mysql://<host_name>/<database_name>
-//            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
-//                "inf124grp31",
-//                "bRU@Eph2");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
+            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
+                "inf124grp31",
+                "bRU@Eph2");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
             // If the connection was successful, create a result set object
             Statement stmt = null;
             ResultSet rs = null;
@@ -264,12 +264,7 @@ public class Product extends HttpServlet {
 "        <table align=\"center\">\n" +
 "            <tr>\n" +
 "                <td><img src=\n" +
-"                    <?php\n" +
-"                        $myquery = \"SELECT main_photo FROM product WHERE P_Id = '\" .  $_GET[\"productid\"] . \"';\";\n" +
-"                        $main_photo = $conn->query($myquery);\n" +
-"                        $result = $main_photo->fetch(PDO::FETCH_ASSOC);\n" +
-"                        echo \"'\" . $result['main_photo'] . \"'\";\n" +
-"                    ?> \n" +
+                    rs.getString("main_photo") +
 "			\" class=\"Main\" alt=\"<?php echo \"productid:\" . $_GET[\"productid\"]; ?>\"/></td>\n" +
 "\n" +
 "                <td width=\"300px\"style=\"font-size:16px;\"><b>\n" +
