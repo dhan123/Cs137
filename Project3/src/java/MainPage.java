@@ -92,7 +92,7 @@ public class MainPage extends HttpServlet {
 "		<img id = \"img1\" src=\"banner.jpg\">\n" +
 "		<!--<img id=\"img1\" src=\"http://www.progressivegrocer.com/sites/default/files/styles/article-full/public/PG%20Articles/Fresh%20Foods_0.jpg?itok=bm6ELlOG\" >-->\n" +
 "		<br></br>\n" +
-"		<!--<div><a href=\"MainPage.html\"><img src=\"home.png\", height=\"100px\"></a></div>\n" +
+"		<!--<div><a href=\"index.html\"><img src=\"home.png\", height=\"100px\"></a></div>\n" +
 "		<div><a href=\"AboutUs.html\"><img src=\"aboutus.png\", height=\"100px\"></a></div>-->\n" +
 "		<div><a href=\"MainPage\", id=\"link\">Home</a></div>\n" +
 "		<div><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +

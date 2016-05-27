@@ -270,7 +270,7 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <img id=\"img1\" src=\"banner.jpg\" >\n" +
 "        <br></br>\n" +
-"        <div class=\"divLinks\"><a href=\"MainPage.html\", id=\"link\">Home</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"index.html\", id=\"link\">Home</a></div>\n" +
 "        <div class=\"divLinks\"><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
 "        <br></br>\n" +
 "    </head>\n" +
@@ -390,8 +390,8 @@ public class Product extends HttpServlet {
 
 "        <br>\n" + 
 "        <div id=\"buttonWrapper\" style=\"text-align: center;\">\n" +  
-"           <form action=\"\" method=\"post\"\n" +
-"               <button style=\"text-align: center; width:150px;\" name=\"cartButton\" value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
+"           <form action=\"ShoppingCart\">\n" +
+"               <button style=\"text-align: center; width:150px;\" name=\""+ rs.getString("name") + "\" value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
 "           </form>\n" +                        
 "        </div>\n" +                         
 "    </body>\n" +
