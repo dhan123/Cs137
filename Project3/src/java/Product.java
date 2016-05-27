@@ -64,6 +64,11 @@ public class Product extends HttpServlet {
             // password. Remember users have access to a specific tabel in the 
             // database.
             // URL: jdbc:mysql://<host_name>/<database_name>
+//            Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
+//                "inf124grp31",
+//                "bRU@Eph2");
+//            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cs137", "danielhan", "12041992");
+            
             Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
                 "inf124grp31",
                 "bRU@Eph2");
