@@ -205,35 +205,29 @@ and open the template in the editor.
            <%
                HttpSession a_session = request.getSession(true);
                
-               Cart session_cart = (Cart)a_session.getAttribute("shoppingcart");
-               
-               HashMap<Item, Integer> c = session_cart.getCart();
-               for (Item i: c.keySet()){
-                   if(session_cart.getQuantity(i) > 0){
-                       out.println("Name: " + session_cart.getName(i) + "Price: " + session_cart.getPrice(i) +
-                               "Quantity: " + session_cart.getQuantity(i));
-                       %>
-                        <p><HR Width="60%"></p>
-                        <%
+               if(a_session.getAttribute("shoppingcart")==null){
+                    out.println("Cart is empty");
+                }
+                else{
+                    Cart session_cart = (Cart)a_session.getAttribute("shoppingcart");
 
-                   }
-               }
-           //String[] name = cart.getName();
-           //int price = cart.getPrice();
-           //int quantity = cart.getQuantity();
-           
-           /*for(int i = 0; i < 12; i++) {
-               out.println("Your IP address is " + request.getRemoteAddr());
-*/
-               %>
-               <!-- <p><HR Width="60%"></p> -->
-               <%
-          // }
+                   HashMap<Item, Integer> c = session_cart.getCart();
+                   for (Item i: c.keySet()){
+                       if(session_cart.getQuantity(i) > 0){
+                           out.println("Name: " + session_cart.getName(i) + "Price: " + session_cart.getPrice(i) +
+                                   "Quantity: " + session_cart.getQuantity(i));
+                           %>
+                            <p><HR Width="60%"></p>
+                           <%
+
+                       }
+                    }
+                }
            %>
         </div>
         
         <div>
-        <form class="orderForm" action="purchased.php" onSubmit="return Validate();" method="post" align="left">
+        <form class="orderForm" action="AddOrderInfo" onSubmit="return Validate();" method="post" align="left">
             <label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
             <label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
             <label>Phone Number</label><input id="phone_number" type="number" name="phone_number" required /> <br />

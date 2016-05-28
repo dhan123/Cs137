@@ -97,6 +97,12 @@ public class ShoppingCart extends HttpServlet {
 "				text-decoration: none;\n" +
 "				font-size: 80px;\n" +
 "			}\n" +
+"                       #sublink {\n" +
+"                          font-family: Moon Flower;\n" +
+"                          color: gray;\n" +
+"                          text-decoration: none;\n" +
+"                          font-size: 60px;\n" +
+"                       }\n" +
 "			.category {\n" +
 "				font-size:2em;\n" +
 "			}\n" +
@@ -106,6 +112,7 @@ public class ShoppingCart extends HttpServlet {
 "		<br></br>\n" +
 "		<div><a href=\"MainPage\", id=\"link\">Home</a></div>\n" +
 "		<div><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
+"               <div><a href=\"checkout.jsp\", id=\"sublink\">Checkout Page</a></div>\n" +
 "		<br></br>\n" +
 "	</head>\n" +
 "	<body>\n" +

@@ -184,6 +184,12 @@ public class Product extends HttpServlet {
 "               left: 0;\n" + 
 "               right: 0;\n" +                        
 "            }\n" + 
+"           #sublink {\n" +
+"               font-family: Moon Flower;\n" +
+"               color: gray;\n" +
+"               text-decoration: none;\n" +
+"               font-size: 60px;\n" +
+"           }\n" +
 "\n" +
 "\n" +
 "        </style>\n" +
@@ -286,6 +292,7 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <div class=\"divLinks\"><a href=\"index.html\", id=\"link\">Home</a></div>\n" +
 "        <div class=\"divLinks\"><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
+"        <div><a href=\"checkout.jsp\", id=\"sublink\">Checkout Page</a></div>\n" +
 "        <br></br>\n" +
 "    </head>\n" +
 "\n" +
@@ -406,10 +413,35 @@ public class Product extends HttpServlet {
 "        <div id=\"buttonWrapper\" style=\"text-align: center;\">\n" +  
 "           <form action=\"ShoppingCart\">\n" +
 "               <button style=\"text-align: center; width:150px;\" name=name"+ " value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
-"           </form>\n" +                        
-"        </div>\n" +                         
-"    </body>\n" +
-"</html>");
+"           </form>\n");
+                out.println("        </div>\n");
+
+/*                
+                if(getServletContext().getAttribute(rs.getString("name")+"_access_count") == null) {
+                    getServletContext().setAttribute(rs.getString("name")+"_access_count", 0);
+                }
+                
+                if(session.getAttribute(rs.getString("history"))==null){
+                } else {
+                    if(getServletContext().getAttribute(session.getAttribute("history")+"_access_count") == null) {
+                        getServletContext().setAttribute(session.getAttribute("history")+"_access_count", 0);
+                    } else {
+                        int previous_ac = (int) getServletContext().getAttribute(session.getAttribute("history")+"_access_count");
+                        previous_ac--;
+                        getServletContext().setAttribute(session.getAttribute("history")+"_access_count", previous_ac);
+                    }
+                }
+                session.setAttribute("history", rs.getString("name"));
+
+                int accessCount = (int) getServletContext().getAttribute(rs.getString("name")+"_access_count");
+                accessCount++;
+                getServletContext().setAttribute(rs.getString("name")+"_access_count", accessCount);
+
+                int accessCount = 1;
+                out.println("Access Count:" + accessCount);
+*/                
+                out.println("</body>");
+                out.println("</html>");
             }
             con.close();
         
