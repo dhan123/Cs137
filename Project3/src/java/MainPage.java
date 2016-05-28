@@ -6,10 +6,15 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 /**
  *
@@ -29,6 +34,19 @@ public class MainPage extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+                //Starts Session for Last 5        
+        HttpSession session = request.getSession(true);
+        ArrayList last = null;
+        //checks if a session has been created
+        if(session.getAttribute("last")==null){
+            //do nothing
+        }
+        else{
+            last = (ArrayList)session.getAttribute("last");
+            
+        }
+            
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
@@ -140,8 +158,13 @@ public class MainPage extends HttpServlet {
 "                <td><a href=\"Product?pid=f4\" name=\"f4\"><img class=\"table\" src=\"https://upload.wikimedia.org/wikipedia/commons/c/c4/Orange-Fruit-Pieces.jpg\" alt=\"Oranges\"/></a><p>$17.00</p><p>Oranges</p></td>\n" +
 "            </tr>\n" +
 "		</table>\n" +
-"	</p>\n" +
-"	</body>\n" +
+"	</p><br><br><br> <div style=\"font-weight:normal\"> <b>Your Last Viewed Items:</b> ");
+            Collections.reverse(last);        
+            for(int i=0;i<last.size(); i++){
+                out.println(last.get(i) + " ");
+            }
+            Collections.reverse(last);
+out.print("</div>	</body>\n" +
 "</html>");
 
         }

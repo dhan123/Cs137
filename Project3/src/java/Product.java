@@ -36,7 +36,7 @@ public class Product extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        //Starts Session for Last 5
+                //Starts Session for Last 5
         HttpSession session = request.getSession(true);
         ArrayList last = new ArrayList();
 
@@ -47,11 +47,23 @@ public class Product extends HttpServlet {
         else{
             last = (ArrayList)session.getAttribute("last");
             if(last.size()<5){
-                last.add(request.getParameter("pid"));
+                if(!last.contains(request.getParameter("pid"))){
+                        last.add(request.getParameter("pid"));
+                }
+                else{
+                    last.remove(request.getParameter("pid"));
+                    last.add(request.getParameter("pid"));
+                }
             }
             else{
-                last.remove(0);
-                last.add(request.getParameter("pid"));
+                if(!last.contains(request.getParameter("pid"))){
+                    last.remove(0);
+                    last.add(request.getParameter("pid"));
+                }
+                else{
+                    last.remove(request.getParameter("pid"));
+                    last.add(request.getParameter("pid"));
+                }
             }
         }
         session.setAttribute("last", last);
