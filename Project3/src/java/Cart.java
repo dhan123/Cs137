@@ -86,7 +86,7 @@ public class Cart {
     
     public Item getItem(String name){
         for(Item i: cart.keySet()){
-            if(i.getName() == name){
+            if(i.getName().equals(name)){
                 return i;
             }
         }
