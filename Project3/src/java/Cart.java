@@ -45,7 +45,7 @@ public class Cart {
         cart.put(i, 0);
         i=null;
         i = new Item();
-        i.setName("Bananas");
+        i.setName("Banana");
         i.setPrice(1);
         cart.put(i, 0);
         i=null;
@@ -75,7 +75,7 @@ public class Cart {
         cart.put(i, 0);
         i=null;
         i = new Item();
-        i.setName("Oranges");
+        i.setName("Orange");
         i.setPrice(17);
         cart.put(i, 0);
     }
