@@ -36,7 +36,6 @@ public class ShoppingCart extends HttpServlet {
         HttpSession session = request.getSession(true);
         Cart shoppingcart = new Cart();        
         String product = request.getParameter("name");
-        String apple = "Apple";
         
         //product = product.replaceAll("\\s","");
         if(session.getAttribute("shoppingcart")==null){
@@ -108,11 +107,11 @@ public class ShoppingCart extends HttpServlet {
 "		<br></br>\n" +
 "	</head>\n" +
 "	<body>\n" +
-"		<br>'" + product + "'" + " '" + apple + "'" +  
+"		<br>'" +  
 "		<br></br>\n" +
-"		<br></br>\n" + product.equals(apple) + 
+"		<br></br>\n" + 
 "		<p>\n" +
-"			You have added an Apple to your Cart!	Amount of apples: 	\n");
+"			You have added an " + product + " to your Cart!	Amount of " + product + "(s): 	\n");
             Item i = shoppingcart.getItem(product);
             out.print(shoppingcart.getQuantity(i));
             

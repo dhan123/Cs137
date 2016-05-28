@@ -403,7 +403,7 @@ public class Product extends HttpServlet {
 "        <br>\n" + 
 "        <div id=\"buttonWrapper\" style=\"text-align: center;\">\n" +  
 "           <form action=\"ShoppingCart\">\n" +
-"               <button style=\"text-align: center; width:150px;\" name=\""+ rs.getString("name") + "\" value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
+"               <button style=\"text-align: center; width:150px;\" name=name"+ " value=\"" + rs.getString("name") + "\" >Add to Cart</button>\n" + 
 "           </form>\n" +                        
 "        </div>\n" +                         
 "    </body>\n" +
