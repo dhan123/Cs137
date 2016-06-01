@@ -4,17 +4,20 @@
     Author     : Sharon
 --%>
 
+<%@page import="java.io.IOException"%>
+<%@page import="java.io.PrintWriter"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Collection"%>
+<%@page import="java.util.Collections"%>
+<%@page import="javax.servlet.ServletException"%>
+<%@page import="javax.servlet.http.HttpServlet"%>
+<%@page import="javax.servlet.http.HttpServletRequest"%>
+<%@page import="javax.servlet.http.HttpServletResponse"%>
+<%@page import="javax.servlet.http.HttpSession"%>
+<%@page import="javax.servlet.http.*"%>
 
-<%@ page import = "java.io.IOException"%>
-<%@ page import = "java.io.PrintWriter"%>
-<%@ page import = "java.util.ArrayList"%>
-<%@ page import = "java.util.Collection"%>
-<%@ page import = "java.util.Collections"%>
-<%@ page import = "javax.servlet.http.*"%>
-
-
-<%@ page import="java.io.*,java.util.*,java.sql.*"%>
-<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@page import="java.io.*,java.util.*,java.sql.*"%>
+<%@page import="javax.servlet.http.*,javax.servlet.*" %>
 
  
 <!DOCTYPE html>
@@ -240,17 +243,17 @@
 "		</table>\n" +
 "	</p>\n" + 
 "       <br><br><br> <div style=\"font-weight:normal\"> <b>Your Last Viewed Items:</b>");
-//        Collections.reverse(last);        
-        for(int i=0;i<last.size(); i++){
-            out.println(last.get(i) + " ");
+        if (b_session.getAttribute("last") == null) {
+            ;
+        } else {
+            Collections.reverse(last);        
+            for(int i=0;i<last.size(); i++){
+                out.println(last.get(i) + " ");
+            }
+            Collections.reverse(last);
         }
-//        Collections.reverse(last);
         out.print("</div>	</body>\n" +
         "</html>");
-            
-            
-            
-            
         
 //        <p>
 //            <table align="center">
