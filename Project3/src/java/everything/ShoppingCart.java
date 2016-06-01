@@ -110,7 +110,7 @@ public class ShoppingCart extends HttpServlet {
 "		<br></br>\n" +
 "		<img id = \"img1\" src=\"banner.jpg\">\n" +
 "		<br></br>\n" +
-"		<div><a href=\"MainPage\", id=\"link\">Home</a></div>\n" +
+"		<div><a href=\"index.jsp\", id=\"link\">Home</a></div>\n" +
 "		<div><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
 "               <div><a href=\"checkout.jsp\", id=\"sublink\">Checkout Page</a></div>\n" +
 "		<br></br>\n" +

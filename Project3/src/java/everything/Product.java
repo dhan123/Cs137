@@ -370,7 +370,7 @@ public class Product extends HttpServlet {
 "\n" +
 "                    </li>\n" +
 "\n" +
-"                    <li>Amount of apples per order:\n" +
+"                    <li>Amount of " + rs.getString("name") + " per order:\n" +
 "\n" +
                         rs.getString("amount") + "\n" + 
 //"                    <?php\n" +

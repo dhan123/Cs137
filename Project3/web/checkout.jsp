@@ -30,8 +30,8 @@ and open the template in the editor.
             
             div{width: 100%; height: 100%; float: center; text-align: center}
 
-            #aboutlink{ width: 50%; height: 100%; float: right;text-align: center; font-size: 33px;font-weight: bold;}
-            #homelink{ width: 50%; height: 100%; float: left;text-align: center; font-size: 33px;font-weight: bold;}
+            #aboutlink{ font-family: Moon Flower; color: gray; text-decoration: none; width: 50%; height: 100%; float: right;text-align: center; font-size: 80px;font-weight: bold;}
+            #homelink{ font-family: Moon Flower; color: gray; text-decoration: none; width: 50%; height: 100%; float: left;text-align: center; font-size: 80px;font-weight: bold;}
 
             #img1 {
                 margin-right: auto;
@@ -191,7 +191,7 @@ and open the template in the editor.
         <br></br>
         <img id="img1" src="banner.jpg" >
         <br></br>
-        <div><a href="MainPage.html", id="homelink">Home</a></div>
+        <div><a href="index.jsp", id="homelink">Home</a></div>
         <div><a href="AboutUs.html", id="aboutlink">About Us</a></div>
         <br></br>
     </head>
@@ -214,8 +214,8 @@ and open the template in the editor.
                    HashMap<Item, Integer> c = session_cart.getCart();
                    for (Item i: c.keySet()){
                        if(session_cart.getQuantity(i) > 0){
-                           out.println("Name: " + session_cart.getName(i) + " Price: " + session_cart.getPrice(i) +
-                                   " Quantity: " + session_cart.getQuantity(i));
+                           out.println("Name: " + session_cart.getName(i) + " \tPrice: $" + session_cart.getPrice(i) +
+                                   " \tQuantity: " + session_cart.getQuantity(i));
                            %>
                             <p><HR Width="60%"></p>
                            <%

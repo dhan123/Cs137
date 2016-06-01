@@ -96,7 +96,7 @@
         <div><a href="AboutUs.html"><img src="aboutus.png", height="100px"></a></div>-->
         <div><a href="index.jsp", id="link">Home</a></div>
         <div><a href="AboutUs.html", id="link">About Us</a></div>
-        <div><a href="checkout.jsp", id="sublink">Checkout Page</a></div><div></div>
+        <div><a href="checkout.jsp", id="sublink">Checkout Page</a></div><div><br></br><br></br><br></br></div>
         <br></br>
     </head>
     <body>
