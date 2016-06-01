@@ -133,6 +133,7 @@ public class AddOrderInfo extends HttpServlet {
             insert_orderdetails(con, shipping, new_oid);
             insert_orderitems(request, con, new_oid);
             
+            con.close();
             String orderdetailsJSP = "orderdetails.jsp";
             response.sendRedirect(orderdetailsJSP);
             return;

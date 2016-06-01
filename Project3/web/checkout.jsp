@@ -214,8 +214,8 @@ and open the template in the editor.
                    HashMap<Item, Integer> c = session_cart.getCart();
                    for (Item i: c.keySet()){
                        if(session_cart.getQuantity(i) > 0){
-                           out.println("Name: " + session_cart.getName(i) + "Price: " + session_cart.getPrice(i) +
-                                   "Quantity: " + session_cart.getQuantity(i));
+                           out.println("Name: " + session_cart.getName(i) + " Price: " + session_cart.getPrice(i) +
+                                   " Quantity: " + session_cart.getQuantity(i));
                            %>
                             <p><HR Width="60%"></p>
                            <%

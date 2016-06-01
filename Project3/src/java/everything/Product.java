@@ -37,38 +37,7 @@ public class Product extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-                //Starts Session for Last 5
-        HttpSession session = request.getSession(true);
-        ArrayList last = new ArrayList();
 
-        //checks if a session has been created
-        if(session.getAttribute("last")==null){
-            last.add(request.getParameter("pid"));
-        }
-        else{
-            last = (ArrayList)session.getAttribute("last");
-            if(last.size()<5){
-                if(!last.contains(request.getParameter("pid"))){
-                        last.add(request.getParameter("pid"));
-                }
-                else{
-                    last.remove(request.getParameter("pid"));
-                    last.add(request.getParameter("pid"));
-                }
-            }
-            else{
-                if(!last.contains(request.getParameter("pid"))){
-                    last.remove(0);
-                    last.add(request.getParameter("pid"));
-                }
-                else{
-                    last.remove(request.getParameter("pid"));
-                    last.add(request.getParameter("pid"));
-                }
-            }
-        }
-        session.setAttribute("last", last);
         try {
             // Load the MYSQL JDBC driver.
             Class.forName("com.mysql.jdbc.Driver");
@@ -90,6 +59,7 @@ public class Product extends HttpServlet {
             // If the connection was successful, create a result set object
             Statement stmt = null;
             ResultSet rs = null;
+            
             //SQL query command
             String SQL = "SELECT * FROM product WHERE P_Id = '" + request.getParameter("pid") + "'";
             stmt = con.createStatement();
@@ -102,6 +72,40 @@ public class Product extends HttpServlet {
 
             try (PrintWriter out = response.getWriter()) {
                 rs.next();
+                
+                //Starts Session for Last 5
+                HttpSession session = request.getSession(true);
+                ArrayList last = new ArrayList();
+
+                //checks if a session has been created
+                if(session.getAttribute("last")==null){
+                    last.add(rs.getString("name"));
+                }
+                else{
+                    last = (ArrayList)session.getAttribute("last");
+                    if(last.size()<5){
+                        if(!last.contains(rs.getString("name"))){
+                                last.add(rs.getString("name"));
+                        }
+                        else{
+                            last.remove(rs.getString("name"));
+                            last.add(rs.getString("name"));
+                        }
+                    }
+                    else{
+                        if(!last.contains(rs.getString("name"))){
+                            last.remove(0);
+                            last.add(rs.getString("name"));
+                        }
+                        else{
+                            last.remove(rs.getString("name"));
+                            last.add(rs.getString("name"));
+                        }
+                    }
+                }
+                
+                session.setAttribute("last", last);
+
                 out.println("<!DOCTYPE html>\n" +
 "<html>\n" +
 "    <head>\n" +
@@ -290,10 +294,10 @@ public class Product extends HttpServlet {
 "        <br></br>\n" +
 "        <img id=\"img1\" src=\"banner.jpg\" >\n" +
 "        <br></br>\n" +
-"        <div class=\"divLinks\"><a href=\"index.html\", id=\"link\">Home</a></div>\n" +
-"        <div class=\"divLinks\"><a href=\"AboutUs.html\", id=\"link\">About Us</a></div>\n" +
-"        <div><a href=\"checkout.jsp\", id=\"sublink\">Checkout Page</a></div>\n" +
-"        <br></br>\n" +
+"        <div class=\"divLinks\"><a href=\"RemoveView?pid=" + rs.getString("P_Id") + "&opt=h\", id=\"link\">Home</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"RemoveView?pid=" + rs.getString("P_Id") + "&opt=a\", id=\"link\">About Us</a></div>\n" +
+"        <div class=\"divLinks\"><a href=\"RemoveView?pid=" + rs.getString("P_Id") + "&opt=c\", id=\"sublink\">Checkout Page</a></div>\n" +
+"        <br></br><br></br><br></br><br></br><br></br><br></br>\n" +
 "    </head>\n" +
 "\n" +
 "    <body>\n" +
@@ -416,30 +420,16 @@ public class Product extends HttpServlet {
 "           </form>\n");
                 out.println("        </div>\n");
 
-/*                
-                if(getServletContext().getAttribute(rs.getString("name")+"_access_count") == null) {
-                    getServletContext().setAttribute(rs.getString("name")+"_access_count", 0);
+//                String product = "product.jsp?pid=" + request.getParameter("pid");
+//                response.sendRedirect(product);
+//                return;
+                if(getServletContext().getAttribute(rs.getString("P_Id")) == null) {
+                    getServletContext().setAttribute(rs.getString("P_Id"), 0);
                 }
-                
-                if(session.getAttribute(rs.getString("history"))==null){
-                } else {
-                    if(getServletContext().getAttribute(session.getAttribute("history")+"_access_count") == null) {
-                        getServletContext().setAttribute(session.getAttribute("history")+"_access_count", 0);
-                    } else {
-                        int previous_ac = (int) getServletContext().getAttribute(session.getAttribute("history")+"_access_count");
-                        previous_ac--;
-                        getServletContext().setAttribute(session.getAttribute("history")+"_access_count", previous_ac);
-                    }
-                }
-                session.setAttribute("history", rs.getString("name"));
-
-                int accessCount = (int) getServletContext().getAttribute(rs.getString("name")+"_access_count");
+                int accessCount = (int) getServletContext().getAttribute(rs.getString("P_Id"));
                 accessCount++;
-                getServletContext().setAttribute(rs.getString("name")+"_access_count", accessCount);
-
-                int accessCount = 1;
-                out.println("Access Count:" + accessCount);
-*/                
+                getServletContext().setAttribute(rs.getString("P_Id"), accessCount);
+                out.println("Viewers: " + accessCount);
                 out.println("</body>");
                 out.println("</html>");
             }
@@ -448,7 +438,6 @@ public class Product extends HttpServlet {
         } catch(Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
-            processRequest(request, response);
         }
         
     }

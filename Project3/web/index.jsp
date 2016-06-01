@@ -15,9 +15,13 @@
 <%@page import="javax.servlet.http.HttpServletResponse"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.http.*"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
 
-<%@page import="java.io.*,java.util.*,java.sql.*"%>
-<%@page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@page import="java.io.*,java.util.*"%>
+<%@page import="javax.servlet.*" %>
 
  
 <!DOCTYPE html>
@@ -92,7 +96,7 @@
         <div><a href="AboutUs.html"><img src="aboutus.png", height="100px"></a></div>-->
         <div><a href="index.jsp", id="link">Home</a></div>
         <div><a href="AboutUs.html", id="link">About Us</a></div>
-        <div><a href="checkout.jsp", id="sublink">Checkout Page</a></div>
+        <div><a href="checkout.jsp", id="sublink">Checkout Page</a></div><div></div>
         <br></br>
     </head>
     <body>
@@ -290,7 +294,7 @@
 //        </br>
 //        </br>
 //        <h2>Last 5 Viewed Products: </h2>   
-        
+        con.close();
                 
         %>
     </body>
