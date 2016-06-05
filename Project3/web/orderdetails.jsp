@@ -97,7 +97,7 @@
 
             <%
             int oid = Integer.parseInt(request.getParameter("oid"));
-            float total = 0;
+            int total = 0;
        
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection( "jdbc:mysql://sylvester-mccoy-v3.ics.uci.edu:3306/inf124grp31",
@@ -120,7 +120,7 @@
                 rs_price = stmt_price.executeQuery(price_Q);
                 rs_price.next();
                 
-                double price = rs_price.getDouble("price");
+                int price = (int)rs_price.getDouble("price");
                 int quantity = rs.getInt("quantity");
                 
                 out.println("Product: " + rs.getString("name") + "&nbsp&nbspPrice: $" + price + 

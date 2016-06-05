@@ -84,6 +84,10 @@ and open the template in the editor.
                 margin-left:1cm;
             }
 
+            div.form{
+                float: right;
+                width: 30%;
+            }
 
         </style>
 
@@ -203,30 +207,47 @@ and open the template in the editor.
             <p><HR Width="60%"></p>
 
            <%
+               
+               
                HttpSession a_session = request.getSession(true);
                
                if(a_session.getAttribute("shoppingcart")==null){
                     out.println("Cart is empty");
                 }
                 else{
-                    Cart session_cart = (Cart)a_session.getAttribute("shoppingcart");
 
+
+                    Cart session_cart = (Cart)a_session.getAttribute("shoppingcart");
+                    boolean istrue = false;
+                    
                    HashMap<Item, Integer> c = session_cart.getCart();
                    for (Item i: c.keySet()){
                        if(session_cart.getQuantity(i) > 0){
-                           out.println("Name: " + session_cart.getName(i) + " \tPrice: $" + session_cart.getPrice(i) +
-                                   " \tQuantity: " + session_cart.getQuantity(i));
+                           istrue = true;
+                           out.println("<b>Name:</b> " + session_cart.getName(i) + "\t\t<b>Price:</b> $" + (session_cart.getPrice(i)*session_cart.getQuantity(i)) +
+                                   "\t\t<b>Quantity:</b> "
+                                   + " " + session_cart.getQuantity(i) + "\t<a href=\"DeleteItem?name="+  session_cart.getName(i) + "\">Delete</a>"); 
                            %>
+                           <div class="form">
+                                    <form action="Update"><input type="number" name="quantity" value="<% out.print(session_cart.getQuantity(i)); %>" min="1" max="99">
+                                         <input type="hidden" value="<% out.print(session_cart.getName(i)); %>" name="name">
+                                         <input type="submit" value="update"></form>
+                           </div>
+                           <br>
                             <p><HR Width="60%"></p>
                            <%
 
                        }
                     }
+                    if(istrue == false){
+                        out.println("Cart is empty<br>");
+                    }
                 }
+                      
            %>
         </div>
         
-        <div>
+        <div><br>
         <form class="orderForm" action="AddOrderInfo" onSubmit="return Validate();" method="post" align="left">
             <label>First Name</label><input id="f_name" type="textbox" name="f_name" value="John" required /> <br />
             <label>Last Name</label><input id="l_name" type="textbox" name="l_name" value="Doe" required /> <br />
